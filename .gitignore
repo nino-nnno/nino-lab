@@ -1,0 +1,19 @@
+# 应用目录
+Clash Verge/
+CloudMusic/
+Delta Force/
+douyin/
+Git/
+MCHOSE HUB/
+Microsoft VS Code/
+rail_user_data/
+resources/
+
+# 压缩包
+*.rar
+*.zip
+*.7z
+
+# 系统文件
+desktop.ini
+Thumbs.db

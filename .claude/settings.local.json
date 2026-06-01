@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Used -ne $null } | Select-Object Name, @{N='Total\\(GB\\)';E={[math]::Round\\($_.Used/1GB + $_.Free/1GB, 0\\)}}, @{N='Free\\(GB\\)';E={[math]::Round\\($_.Free/1GB, 0\\)}}, Root | Sort-Object 'Free\\(GB\\)' -Descending | Format-Table -AutoSize)",
+      "PowerShell($WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut\\(\"$\\([Environment]::GetFolderPath\\('Desktop'\\)\\)\\\\claude.lnk\"\\); $Shortcut.TargetPath = \"D:\\\\claude\"; $Shortcut.Save\\(\\))",
+      "PowerShell(git config --global user.name \"Administrator\")",
+      "PowerShell(git config --global user.email \"admin@wtx.local\")"
+    ]
+  }
+}
