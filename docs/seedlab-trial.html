@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>棰勭害璇曞惉 鈥?nino缂栫▼瀹為獙瀹?/title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf3;
+  --paper: #f7f2e7;
+  --paper-dark: #ede5d5;
+  --ink: #2d2420;
+  --ink-light: #5c524b;
+  --ink-muted: #968b82;
+  --orange: #e8652e;
+  --orange-light: #f2854b;
+  --mustard: #f4b836;
+  --teal: #3d8b7d;
+  --berry: #c7526e;
+  --sky: #6ba5c7;
+  --green: #7a9e5a;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Nunito', 'Segoe UI', sans-serif;
+  --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* 鈹€鈹€鈹€ Nav 鈹€鈹€鈹€ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 24px;
+  background: rgba(253,250,243,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.nav-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.375rem;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.logo-text {
+  font-family: 'Brush Script MT', 'Lucida Handwriting', 'Georgia', cursive;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #e91e63;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #ad1457;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.nav-back {
+  color: var(--ink-light); text-decoration: none;
+  font-weight: 600; font-size: 0.9375rem;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--orange); }
+
+/* 鈹€鈹€鈹€ Main 鈹€鈹€鈹€ */
+main {
+  position: relative; z-index: 1;
+  padding: 120px 24px 80px;
+  max-width: 1000px; margin: 0 auto;
+}
+
+/* 鈹€鈹€鈹€ Page Header 鈹€鈹€鈹€ */
+.page-header {
+  text-align: center; margin-bottom: 60px;
+}
+.page-eyebrow {
+  font-weight: 700; font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--orange); margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.page-header p {
+  color: var(--ink-light); font-size: 1.0625rem;
+}
+
+/* 鈹€鈹€鈹€ Trial Courses 鈹€鈹€鈹€ */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.trial-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.trial-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  border: 1px solid rgba(0,0,0,0.04);
+  display: flex; gap: 20px;
+  align-items: flex-start;
+  transition: all 0.3s var(--ease-smooth);
+}
+.trial-card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.trial-icon { display: none; }
+.trial-info { flex: 1; }
+.trial-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.125rem; font-weight: 600;
+  margin-bottom: 4px;
+}
+.trial-age {
+  font-size: 0.8125rem; color: var(--orange);
+  font-weight: 700; margin-bottom: 8px; display: block;
+}
+.trial-desc {
+  font-size: 0.9375rem; color: var(--ink-light);
+  line-height: 1.6; margin-bottom: 10px;
+}
+.trial-detail {
+  font-size: 0.8125rem; color: var(--ink-muted);
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+.trial-detail span { white-space: nowrap; }
+
+/* 鈹€鈹€鈹€ Rules 鈹€鈹€鈹€ */
+.rules-section {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 40px 40px;
+  margin-bottom: 56px;
+}
+.rules-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.375rem; font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 8px;
+}
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.rule-item {
+  display: flex; gap: 12px;
+}
+.rule-num {
+  width: 28px; height: 28px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.8125rem;
+  flex-shrink: 0;
+}
+.rule-text h5 {
+  font-size: 0.9375rem; font-weight: 700;
+  margin-bottom: 2px;
+}
+.rule-text p {
+  font-size: 0.875rem; color: var(--ink-light);
+  line-height: 1.5;
+}
+
+/* 鈹€鈹€鈹€ Contact 鈹€鈹€鈹€ */
+.contact-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.contact-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 32px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.contact-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem; font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.contact-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(232,101,46,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.contact-label {
+  font-size: 0.75rem; color: var(--ink-muted);
+  font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 2px;
+}
+.contact-value {
+  font-weight: 700; font-size: 1.0625rem;
+  color: var(--ink);
+}
+
+/* 鈹€鈹€鈹€ Form 鈹€鈹€鈹€ */
+.form-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 32px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.form-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem; font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.form-card > p {
+  font-size: 0.9375rem; color: var(--ink-light);
+  margin-bottom: 24px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.form-field { margin-bottom: 14px; }
+.form-field label {
+  display: block; font-weight: 700; font-size: 0.8125rem;
+  margin-bottom: 6px; color: var(--ink);
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  background: var(--cream);
+  color: var(--ink);
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--orange);
+}
+.form-field textarea { resize: vertical; min-height: 80px; }
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-smooth);
+  margin-top: 4px;
+}
+.form-submit:hover {
+  background: var(--orange-light);
+  box-shadow: 0 6px 24px rgba(232,101,46,0.3);
+}
+
+/* 鈹€鈹€鈹€ Q&A 鈹€鈹€鈹€ */
+.faq-section { margin-top: 56px; }
+.faq-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.faq-item {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 22px 28px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.faq-item h5 {
+  font-size: 0.9375rem; font-weight: 700;
+  margin-bottom: 6px;
+}
+.faq-item p {
+  font-size: 0.875rem; color: var(--ink-light);
+  line-height: 1.6;
+}
+
+/* 鈹€鈹€鈹€ Footer 鈹€鈹€鈹€ */
+.footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding: 36px 24px; text-align: center;
+}
+.footer p { color: var(--ink-muted); font-size: 0.875rem; }
+
+/* 鈹€鈹€鈹€ Reveal 鈹€鈹€鈹€ */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .nav-inner { padding: 0; }
+  .trial-list { grid-template-columns: 1fr; }
+  .trial-card { flex-direction: column; gap: 12px; }
+  .contact-section { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .rules-section { padding: 28px 20px; }
+  .cta-block { padding: 36px 20px; }
+  main { padding: 100px 16px 60px; }
+  .page-header h1 { font-size: 1.625rem; }
+  .section-title { font-size: 1.25rem; }
+}
+@media (max-width: 380px) {
+  .contact-card { padding: 20px; }
+  .form-card { padding: 20px; }
+  .faq-item { padding: 16px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="seedlab.html" class="logo" style="flex-direction:column;align-items:flex-start;gap:0;">
+      <span class="logo-text">nino</span>
+      <span class="logo-sub">缂栫▼瀹為獙瀹?/span>
+    </a>
+    <a href="seedlab.html" class="nav-back">鈫?杩斿洖棣栭〉</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page-header reveal">
+    <div class="page-eyebrow">鍏嶈垂璇曞惉</div>
+    <h1>閫変竴闂ㄨ锛屽甫瀛╁瓙鏉ヨ瘯璇?/h1>
+    <p>姣忚妭璇曞惉璇鹃兘鏄竴鑺傚畬鏁寸殑灏忚锛屼笉鏄搴ф帹閿€銆傚瀛愬姩鎵嬶紝浣犲湪鏃佽竟鐪嬨€?/p>
+  </div>
+
+  <!-- Trial Course List -->
+  <h2 class="section-title reveal">璇曞惉璇剧▼</h2>
+  <div class="trial-list">
+    <div class="trial-card reveal">
+      <div class="trial-icon"></div>
+      <div class="trial-info">
+        <h4>涔愰珮鏈哄櫒浜哄惎钂?/h4>
+        <span class="trial-age">閫傚悎 4鈥? 宀?/span>
+        <p class="trial-desc">鎼缓涓€涓細鍔ㄧ殑"鑷姩闂?鏈哄櫒浜猴紝璁よ瘑鐢垫満鍜岀孩澶栦紶鎰熷櫒銆傚瀛愬甫璧颁竴涓嚜宸辨嫾鐨勬ā鍨嬨€?/p>
+        <div class="trial-detail">
+          <span>馃晲 40 鍒嗛挓</span><span>馃懃 1 瀵?2</span><span>馃搮 姣忓懆鍏?鏃ヤ笂鍗?/span>
+        </div>
+      </div>
+    </div>
+    <div class="trial-card reveal">
+      <div class="trial-icon"></div>
+      <div class="trial-info">
+        <h4>Scratch 鍒涙剰缂栫▼</h4>
+        <span class="trial-age">閫傚悎 7鈥?1 宀?/span>
+        <p class="trial-desc">涓€鑺傝鍋氬嚭涓€涓?鎺ヨ嫻鏋?灏忔父鎴忥紝瀛︿細鍧愭爣銆侀殢鏈烘暟鍜屽緱鍒嗗彉閲忕殑姒傚康銆?/p>
+        <div class="trial-detail">
+          <span>馃晲 40 鍒嗛挓</span><span>馃懃 1 瀵?3</span><span>馃搮 姣忓懆鍏?鏃ヤ笅鍗?/span>
+        </div>
+      </div>
+    </div>
+    <div class="trial-card reveal">
+      <div class="trial-icon"></div>
+      <div class="trial-info">
+        <h4>Python 鎺㈡瀛﹂櫌</h4>
+        <span class="trial-age">閫傚悎 10鈥?3 宀?/span>
+        <p class="trial-desc">鐢?Python 鍐欎竴涓?鐚滄暟瀛?娓告垙锛屼粠 print 鍒?input 鍒?while 寰幆锛屼竴姘斿懙鎴愩€?/p>
+        <div class="trial-detail">
+          <span>馃晲 50 鍒嗛挓</span><span>馃懃 1 瀵?3</span><span>馃搮 姣忓懆鍏笅鍗?/span>
+        </div>
+      </div>
+    </div>
+    <div class="trial-card reveal">
+      <div class="trial-icon"></div>
+      <div class="trial-info">
+        <h4>鏈哄櫒浜?+ C++ 绔炶禌</h4>
+        <span class="trial-age">閫傚悎 12鈥?6 宀?/span>
+        <p class="trial-desc">鐢?Arduino 缁勮涓€杈嗗贰绾垮皬杞︼紝鍐欎竴娈垫帶鍒朵唬鐮佽瀹冩部鐫€榛戠嚎璺戝畬鍏ㄧ▼銆?/p>
+        <div class="trial-detail">
+          <span>馃晲 60 鍒嗛挓</span><span>馃懃 1 瀵?2</span><span>馃搮 姣忓懆鏃ヤ笂鍗?/span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rules -->
+  <div class="rules-section reveal">
+    <h3>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="vertical-align:middle;margin-right:6px"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#e8652e" stroke-width="2"/><path d="M7 11l3 3 5-5" stroke="#e8652e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      璇曞惉瑙勫垯</h3>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <div class="rule-num">1</div>
+        <div class="rule-text">
+          <h5>鎻愬墠涓€澶╅绾?/h5>
+          <p>鏂逛究鎴戜滑鍑嗗鏁欏叿鍜屽畨鎺掕€佸笀锛屼笉鎺ュ彈褰撳ぉ涓存椂鍒拌銆?/p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">2</div>
+        <div class="rule-text">
+          <h5>瀹堕暱鍏ㄧ▼鏃佸惉</h5>
+          <p>鎴戜滑涓嶅叧闂ㄤ笂璇俱€備綘鍧愬湪鏁欏鍚庨潰锛岀湅鑰佸笀鎬庝箞鏁欍€佸瀛愭€庝箞瀛︺€?/p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">3</div>
+        <div class="rule-text">
+          <h5>璇曞惉瀹屽叏鍏嶈垂</h5>
+          <p>涓嶆敹璐广€佷笉鎶奸噾銆佷笉寮哄埗鎶ュ悕銆傝瘯鍚粨鏉熷悗浣犺寰椾笉鍚堥€傦紝鐩存帴璧帮紝鎴戜滑涓嶈拷銆?/p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">4</div>
+        <div class="rule-text">
+          <h5>姣忎汉闄愮害涓€闂?/h5>
+          <p>涓€娆″彧鑳界害涓€闂ㄨ瘯鍚銆備笂瀹屼簡瑙夊緱濂斤紝鍐嶇害鍏朵粬璇剧▼涔熶笉杩熴€?/p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">5</div>
+        <div class="rule-text">
+          <h5>甯︿笂姘存澂灏辫</h5>
+          <p>鐢佃剳銆佸钩鏉裤€佹暀鍏锋垜浠叏閮ㄦ彁渚涖€傚瀛愮┖鎵嬫潵灏辫銆?/p>
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">6</div>
+        <div class="rule-text">
+          <h5>濡備复鏃舵湁浜嬧€︹€?/h5>
+          <p>鎻愬墠 2 灏忔椂寰俊鎴栫數璇濆彇娑堝嵆鍙紝鍚嶉鐣欑粰鍏朵粬瀛╁瓙锛屼笅娆″啀绾︺€?/p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact + Form -->
+  <div class="contact-section reveal">
+    <div>
+      <div class="contact-card">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="vertical-align:middle;margin-right:6px"><rect x="3" y="3" width="16" height="16" rx="3" stroke="#e8652e" stroke-width="2"/><path d="M7 11l3 3 5-5" stroke="#e8652e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          鑱旂郴鏂瑰紡</h3>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="2" width="10" height="16" rx="2" stroke="#e8652e" stroke-width="1.5"/><line x1="8" y1="14" x2="12" y2="14" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">鎵嬫満 / 寰俊</div>
+            <div class="contact-value">186-7691-2345</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="#e8652e" stroke-width="1.5"/><path d="M7 7h6M7 10h4" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">搴ф満</div>
+            <div class="contact-value">0769-88001234</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#e8652e" stroke-width="1.5"/><path d="M5.5 17c0-3 2-5.5 4.5-5.5s4.5 2.5 4.5 5.5" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">宸ヤ綔瀹ゅ湴鍧€</div>
+            <div class="contact-value">涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?路 3 妤?301</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="#e8652e" stroke-width="1.5"/><path d="M10 6v4l2.5 2.5" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">鎺ュ緟鏃堕棿</div>
+            <div class="contact-value">鍛ㄤ笁鑷冲懆鏃?9:00鈥?8:00</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="#e8652e" stroke-width="1.5"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">璇剧▼椤鹃棶</div>
+            <div class="contact-value">闄堣€佸笀锛堝井淇″悓鍙凤級</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="form-card">
+        <h3>蹇€熼绾?/h3>
+        <p>濉笅琛紝璇剧▼椤鹃棶 2 灏忔椂鍐呰仈绯讳綘纭鏃堕棿銆?/p>
+        <div class="form-row">
+          <div class="form-field">
+            <label>瀹堕暱濮撳悕 *</label>
+            <input type="text" placeholder="鎬庝箞绉板懠鎮?>
+          </div>
+          <div class="form-field">
+            <label>鎵嬫満鍙?*</label>
+            <input type="tel" placeholder="鏂逛究鎴戜滑鑱旂郴鎮?>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>瀛╁瓙鏄电О *</label>
+            <input type="text" placeholder="灏忔湅鍙嬫€庝箞绉板懠">
+          </div>
+          <div class="form-field">
+            <label>瀛╁瓙骞撮緞 *</label>
+            <select>
+              <option value="">璇烽€夋嫨</option>
+              <option>4 宀?/option><option>5 宀?/option><option>6 宀?/option>
+              <option>7 宀?/option><option>8 宀?/option><option>9 宀?/option>
+              <option>10 宀?/option><option>11 宀?/option><option>12 宀?/option>
+              <option>13 宀?/option><option>14 宀?/option><option>15 宀?/option>
+              <option>16 宀?/option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>鎰忓悜璇剧▼ *</label>
+          <select>
+            <option value="">璇烽€夋嫨鎯宠瘯鍚殑璇剧▼</option>
+            <option>涔愰珮鏈哄櫒浜哄惎钂欙紙4鈥? 宀侊級</option>
+            <option>Scratch 鍒涙剰缂栫▼锛?鈥?1 宀侊級</option>
+            <option>Python 鎺㈡瀛﹂櫌锛?0鈥?3 宀侊級</option>
+            <option>鏈哄櫒浜?+ C++ 绔炶禌锛?2鈥?6 宀侊級</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>澶囨敞</label>
+          <textarea placeholder="鏈変粈涔堟兂鎻愬墠鍛婅瘔鎴戜滑鐨勶紵姣斿瀛╁瓙鏈夋病鏈夌紪绋嬪熀纭€銆佺壒鍒劅鍏磋叮鐨勬柟闈⑩€︹€︼紙閫夊～锛?></textarea>
+        </div>
+        <button class="form-submit" type="button" id="formSubmit">鎻愪氦棰勭害 鈫?/button>
+        <p id="formMsg" style="display:none;text-align:center;margin-top:16px;color:#3d8b7d;font-weight:700;font-size:0.9375rem"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section reveal">
+    <h3>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" style="vertical-align:middle;margin-right:6px"><circle cx="11" cy="11" r="8" stroke="#e8652e" stroke-width="2"/><path d="M8 10.5c.5-2 2-3.5 3-3.5s2.5 1.5 3 3.5" stroke="#e8652e" stroke-width="2" stroke-linecap="round"/><circle cx="9.5" cy="11.5" r="0.8" fill="#e8652e"/><circle cx="12.5" cy="11.5" r="0.8" fill="#e8652e"/></svg>
+      甯歌闂</h3>
+    <div class="faq-item">
+      <h5>璇曞惉璇惧拰姝ｅ紡璇炬湁浠€涔堝尯鍒紵</h5>
+      <p>璇曞惉璇惧氨鏄寮忚鐨勭涓€鑺傗€斺€斾竴鏍风殑鑰佸笀銆佷竴鏍风殑鏁欏銆佷竴鏍风殑涓婅鏂瑰紡銆傚敮涓€鐨勫尯鍒槸涓婂畬涓嶇敤浜ら挶銆?/p>
+    </div>
+    <div class="faq-item">
+      <h5>瀛╁瓙浠庢潵娌℃帴瑙﹁繃缂栫▼锛岃兘璺熶笂鍚楋紵</h5>
+      <p>鎵€鏈夎绋嬮兘浠庨浂寮€濮嬭璁°€傝瘯鍚灏辨槸缁欓浂鍩虹鐨勫瀛愬噯澶囩殑锛屼綘鏀惧績銆?/p>
+    </div>
+    <div class="faq-item">
+      <h5>闇€瑕佽嚜宸卞甫鐢佃剳鍚楋紵</h5>
+      <p>涓嶉渶瑕併€傛垜浠彁渚涙墍鏈夎澶囧拰鏁欏叿锛屽瀛愮┖鎵嬫潵灏辫銆傝鍚庝綔鍝佸彲浠ュ甫璧般€?/p>
+    </div>
+    <div class="faq-item">
+      <h5>璇曞惉璇句箣鍚庢姤鍚嶆湁浼樻儬鍚楋紵</h5>
+      <p>璇曞惉褰撳ぉ鎶ュ悕浜彈 9 鎶樸€傚彟澶栧厔寮熷濡瑰悓鎶ャ€佽€佸鍛樻帹鑽愰兘鏈夐澶栨姌鎵ｏ紝鍏蜂綋鍜ㄨ闄堣€佸笀銆?/p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?路 0769-88001234 路 nino缂栫▼瀹為獙瀹?漏 2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form handling
+document.getElementById('formSubmit').addEventListener('click', () => {
+  const fields = document.querySelectorAll('.form-field input, .form-field select');
+  let ok = true;
+  fields.forEach(f => {
+    if (f.required || f.closest('.form-field')?.querySelector('label')?.textContent?.includes('*')) {
+      if (!f.value) { f.style.borderColor = '#e8652e'; ok = false; }
+      else { f.style.borderColor = 'rgba(0,0,0,0.08)'; }
+    }
+  });
+  if (!ok) {
+    document.getElementById('formMsg').style.display = 'block';
+    document.getElementById('formMsg').style.color = '#e8652e';
+    document.getElementById('formMsg').textContent = '璇峰～鍐欐墍鏈夊繀濉」';
+    return;
+  }
+  document.getElementById('formSubmit').disabled = true;
+  document.getElementById('formSubmit').textContent = '鎻愪氦涓?..';
+  setTimeout(() => {
+    document.getElementById('formMsg').style.display = 'block';
+    document.getElementById('formMsg').style.color = '#3d8b7d';
+    document.getElementById('formMsg').textContent = '棰勭害鎻愪氦鎴愬姛锛侀檲鑰佸笀浼氬湪 2 灏忔椂鍐呰仈绯绘偍纭鏃堕棿銆?;
+    document.getElementById('formSubmit').textContent = '宸叉彁浜?鉁?;
+    document.querySelectorAll('.form-field input, .form-field select, .form-field textarea').forEach(f => f.value = '');
+  }, 800);
+});
+</script>
+</body>
+</html>
