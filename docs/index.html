@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>nino缂栫▼瀹為獙瀹?鈥?灏戝効缂栫▼鍚挋宸ヤ綔瀹?/title>
+<title>nino编程实验室 — 少儿编程启蒙工作室</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -44,14 +44,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 鈹€鈹€鈹€ Paper Texture 鈹€鈹€鈹€ */
+/* ─── Paper Texture ─── */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* 鈹€鈹€鈹€ Nav 鈹€鈹€鈹€ */
+/* ─── Nav ─── */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 0 24px;
@@ -107,7 +107,7 @@ body::before {
 .nav-btn:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(232,101,46,0.3); }
 .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--ink); padding: 4px; }
 
-/* 鈹€鈹€鈹€ Hero 鈹€鈹€鈹€ */
+/* ─── Hero ─── */
 .hero {
   position: relative; z-index: 1;
   padding: 140px 24px 100px;
@@ -238,7 +238,7 @@ body::before {
   50% { opacity: 0.3; }
 }
 
-/* 鈹€鈹€鈹€ Sections 鈹€鈹€鈹€ */
+/* ─── Sections ─── */
 .section {
   position: relative; z-index: 1;
   padding: 72px 24px;
@@ -262,7 +262,7 @@ body::before {
 }
 .container { max-width: 1080px; margin: 0 auto; }
 
-/* 鈹€鈹€鈹€ Courses 鈹€鈹€鈹€ */
+/* ─── Courses ─── */
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -323,7 +323,7 @@ body::before {
   font-weight: 600;
 }
 
-/* 鈹€鈹€鈹€ Approach 鈹€鈹€鈹€ */
+/* ─── Approach ─── */
 .approach-section { background: var(--paper); }
 .approach-list {
   display: grid;
@@ -376,7 +376,7 @@ body::before {
 .approach-item:nth-child(2):hover .approach-num { color: var(--teal); }
 .approach-item:nth-child(3):hover .approach-num { color: var(--sky); }
 
-/* 鈹€鈹€鈹€ Projects 鈹€鈹€鈹€ */
+/* ─── Projects ─── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -428,7 +428,7 @@ body::before {
   font-weight: 600;
 }
 
-/* 鈹€鈹€鈹€ Teachers 鈹€鈹€鈹€ */
+/* ─── Teachers ─── */
 .teachers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -470,7 +470,7 @@ body::before {
 .teacher-role { font-size: 0.8125rem; color: var(--orange); font-weight: 700; display: block; margin-bottom: 6px; }
 .teacher-info p { font-size: 0.875rem; color: var(--ink-light); line-height: 1.5; }
 
-/* 鈹€鈹€鈹€ CTA 鈹€鈹€鈹€ */
+/* ─── CTA ─── */
 .cta-section { text-align: center; }
 .cta-block {
   max-width: 600px; margin: 0 auto;
@@ -499,7 +499,7 @@ body::before {
   position: relative; z-index: 1;
 }
 
-/* 鈹€鈹€鈹€ Footer 鈹€鈹€鈹€ */
+/* ─── Footer ─── */
 .footer {
   position: relative; z-index: 1;
   border-top: 1px solid rgba(0,0,0,0.05);
@@ -507,21 +507,21 @@ body::before {
 }
 .footer p { color: var(--ink-muted); font-size: 0.875rem; }
 
-/* 鈹€鈹€鈹€ Doodle Divider 鈹€鈹€鈹€ */
+/* ─── Doodle Divider ─── */
 .divider-doodle {
   text-align: center; padding: 0 24px;
   position: relative; z-index: 1;
 }
 .divider-doodle svg { max-width: 200px; opacity: 0.5; }
 
-/* 鈹€鈹€鈹€ Reveal 鈹€鈹€鈹€ */
+/* ─── Reveal ─── */
 .reveal {
   opacity: 0; transform: translateY(32px);
   transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* 鈹€鈹€鈹€ Pricing 鈹€鈹€鈹€ */
+/* ─── Pricing ─── */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -548,7 +548,7 @@ body::before {
 .pricing-detail { font-size: 0.8125rem; color: var(--ink-light); line-height: 1.6; margin-top: 6px; }
 .pricing-note { margin-top: 36px; text-align: center; font-size: 0.875rem; color: var(--ink-muted); line-height: 1.7; }
 
-/* 鈹€鈹€鈹€ Map 鈹€鈹€鈹€ */
+/* ─── Map ─── */
 .map-section { background: var(--paper); }
 .map-container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
 .map-frame {
@@ -567,7 +567,7 @@ body::before {
 .map-label { font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; margin-bottom: 2px; }
 .map-value { font-weight: 600; font-size: 0.9375rem; }
 
-/* 鈹€鈹€鈹€ QR 鈹€鈹€鈹€ */
+/* ─── QR ─── */
 .qr-card {
   background: #fff; border-radius: var(--radius-md);
   padding: 32px; text-align: center;
@@ -585,7 +585,7 @@ body::before {
 .qr-card h4 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; margin-bottom: 4px; }
 .qr-card p { font-size: 0.8125rem; color: var(--ink-muted); line-height: 1.5; }
 
-/* 鈹€鈹€鈹€ Gallery 鈹€鈹€鈹€ */
+/* ─── Gallery ─── */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -678,7 +678,7 @@ body::before {
   opacity: 0.7;
 }
 
-/* 鈹€鈹€鈹€ Testimonials 鈹€鈹€鈹€ */
+/* ─── Testimonials ─── */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -747,7 +747,7 @@ body::before {
 .testimonial-msg::before { content: '\201C'; }
 .testimonial-msg::after { content: '\201D'; }
 
-/* 鈹€鈹€鈹€ Responsive 鈹€鈹€鈹€ */
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
   /* Nav */
   .nav-links { display: none; }
@@ -820,29 +820,29 @@ body::before {
   <div class="nav-inner">
     <a href="#" class="logo" style="flex-direction:column;align-items:flex-start;gap:0;">
       <span class="logo-text">nino</span>
-      <span class="logo-sub">缂栫▼瀹為獙瀹?/span>
+      <span class="logo-sub">编程实验室</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#courses">璇剧▼</a></li>
-      <li><a href="#pricing">浠锋牸</a></li>
-      <li><a href="#testimonials">鍙ｇ</a></li>
-      <li><a href="#teachers">瀵煎笀</a></li>
-      <li><a href="#contact">鑱旂郴</a></li>
+      <li><a href="#courses">课程</a></li>
+      <li><a href="#pricing">价格</a></li>
+      <li><a href="#testimonials">口碑</a></li>
+      <li><a href="#teachers">导师</a></li>
+      <li><a href="#contact">联系</a></li>
     </ul>
-    <a href="seedlab-trial.html" class="nav-btn">棰勭害璇曞惉</a>
-    <button class="nav-toggle" aria-label="鑿滃崟" onclick="const l=document.querySelector('.nav-links'); l.style.display=l.style.display==='flex'?'none':'flex'">鈽?/button>
+    <a href="seedlab-trial.html" class="nav-btn">预约试听</a>
+    <button class="nav-toggle" aria-label="菜单" onclick="const l=document.querySelector('.nav-links'); l.style.display=l.style.display==='flex'?'none':'flex'">☰</button>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
   <div>
-    <span class="hero-tag">4鈥?6 宀?路 灏忕彮鍒?路 绾夸笅宸ヤ綔瀹?/span>
-    <h1>璁╂瘡涓瀛?br>閮借兘<em>鍒涢€?/em>鑰岄潪娑堣垂</h1>
-    <p>涓嶆槸鍩硅鐝紝鏄竴闂寸婊″ソ濂囧績鐨勫疄楠屽銆傛垜浠敤 Scratch銆丳ython 鍜屾満鍣ㄤ汉锛屽甫瀛╁瓙鍦ㄧ姱閿欏拰淇涓浼氱紪绋嬧€斺€斾篃瀛︿細鎬濊€冦€?/p>
+    <span class="hero-tag">4–16 岁 · 小班制 · 线下工作室</span>
+    <h1>让每个孩子<br>都能<em>创造</em>而非消费</h1>
+    <p>不是培训班，是一间种满好奇心的实验室。我们用 Scratch、Python 和机器人，带孩子在犯错和修复中学会编程——也学会思考。</p>
     <div class="hero-actions">
-      <a href="seedlab-trial.html" class="btn btn-fill">棰勭害鍏嶈垂璇曞惉璇?鈫?/a>
-      <a href="#courses" class="btn btn-line">鐪嬬湅璇剧▼</a>
+      <a href="seedlab-trial.html" class="btn btn-fill">预约免费试听课 →</a>
+      <a href="#courses" class="btn btn-line">看看课程</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -851,8 +851,8 @@ body::before {
       <div class="hero-blob hero-blob--sm"></div>
       <div class="hero-blob hero-blob--xs"></div>
       <div class="hero-float-cards">
-        <div class="float-card"><span class="float-dot float-dot--orange"></span> Scratch 鍔ㄧ敾</div>
-        <div class="float-card"><span class="float-dot float-dot--mustard"></span> Python 灏忔父鎴?/div>
+        <div class="float-card"><span class="float-dot float-dot--orange"></span> Scratch 动画</div>
+        <div class="float-card"><span class="float-dot float-dot--mustard"></span> Python 小游戏</div>
       </div>
     </div>
   </div>
@@ -862,34 +862,34 @@ body::before {
 <section class="section" id="courses">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">闃舵璇剧▼</div>
-      <h2>鍥涘勾纾ㄤ竴鍓戠殑璇剧▼浣撶郴</h2>
-      <p>浠庢嫋鎷界Н鏈ㄥ埌鍐欏嚭绗竴涓?Python 鐖櫕锛屾瘡涓€姝ラ兘韪╁湪瀛╁瓙鐨勬渶杩戝彂灞曞尯閲屻€?/p>
+      <div class="section-eyebrow">阶梯课程</div>
+      <h2>四年磨一剑的课程体系</h2>
+      <p>从拖拽积木到写出第一个 Python 爬虫，每一步都踩在孩子的最近发展区里。</p>
     </div>
     <div class="courses-grid">
       <a href="seedlab-course-robot.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
-        <span class="course-age">4鈥? 宀?/span>
-        <h3>涔愰珮鏈哄櫒浜哄惎钂?/h3>
-        <p>鐢ㄥぇ棰楃矑绉湪鎼涓€涓細鍔ㄧ殑鏈哄櫒浜恒€傜數鏈轰竴鎺ャ€侀娇杞竴杞紝瀛╁瓙鍦ㄦ嫾瑁呬腑鐞嗚В鏈烘缁撴瀯鍜屼紶鎰熷櫒鍘熺悊銆?/p>
-        <div class="course-meta"><span>12 璇炬椂</span><span>4 浜虹彮</span></div>
+        <span class="course-age">4–7 岁</span>
+        <h3>乐高机器人启蒙</h3>
+        <p>用大颗粒积木搭第一个会动的机器人。电机一接、齿轮一转，孩子在拼装中理解机械结构和传感器原理。</p>
+        <div class="course-meta"><span>12 课时</span><span>4 人班</span></div>
       </a>
       <a href="seedlab-course-scratch.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
-        <span class="course-age">7鈥?1 宀?/span>
-        <h3>Scratch 鍒涙剰缂栫▼</h3>
-        <p>浠?Flappy Bird 鍒版鐗╁ぇ鎴樺兊灏革紝姣忚妭璇惧氨鏄竴涓畬鏁寸殑娓告垙椤圭洰銆傚浼氬彉閲忋€佸惊鐜拰浜嬩欢銆?/p>
-        <div class="course-meta"><span>24 璇炬椂</span><span>6 浜虹彮</span></div>
+        <span class="course-age">7–11 岁</span>
+        <h3>Scratch 创意编程</h3>
+        <p>从 Flappy Bird 到植物大战僵尸，每节课就是一个完整的游戏项目。学会变量、循环和事件。</p>
+        <div class="course-meta"><span>24 课时</span><span>6 人班</span></div>
       </a>
       <a href="seedlab-course-python.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
-        <span class="course-age">10鈥?3 宀?/span>
-        <h3>Python 鎺㈡瀛﹂櫌</h3>
-        <p>鐢ㄤ唬鐮佺牬瑙ｈ皽棰橈細鍐欎竴涓嚜鍔ㄦ暣鐞嗘枃浠剁殑鑴氭湰锛屽仛涓€涓ぉ姘旀煡璇㈡満鍣ㄤ汉銆傚憡鍒?print("hello world")銆?/p>
-        <div class="course-meta"><span>32 璇炬椂</span><span>6 浜虹彮</span></div>
+        <span class="course-age">10–13 岁</span>
+        <h3>Python 探案学院</h3>
+        <p>用代码破解谜题：写一个自动整理文件的脚本，做一个天气查询机器人。告别 print("hello world")。</p>
+        <div class="course-meta"><span>32 课时</span><span>6 人班</span></div>
       </a>
       <a href="seedlab-course-cpp.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
-        <span class="course-age">12鈥?6 宀?/span>
-        <h3>鏈哄櫒浜?+ C++ 绔炶禌钀?/h3>
-        <p>Arduino 灏忚溅 + 浼犳劅鍣?+ 绠楁硶鍏ラ棬銆傞潰鍚戜俊濂ュ拰鏈哄櫒浜虹珵璧涳紝甯︽瘮璧涙姤鍚嶈緟瀵笺€?/p>
-        <div class="course-meta"><span>48 璇炬椂</span><span>4 浜虹彮</span></div>
+        <span class="course-age">12–16 岁</span>
+        <h3>机器人 + C++ 竞赛营</h3>
+        <p>Arduino 小车 + 传感器 + 算法入门。面向信奥和机器人竞赛，带比赛报名辅导。</p>
+        <div class="course-meta"><span>48 课时</span><span>4 人班</span></div>
       </a>
     </div>
   </div>
@@ -899,39 +899,39 @@ body::before {
 <section class="section" id="pricing" style="padding-bottom:0">
   <div class="container" style="max-width:960px">
     <div class="section-header reveal" style="margin-bottom:36px">
-      <div class="section-eyebrow">璇剧▼璐圭敤</div>
-      <h2>鏄庣爜鏍囦环锛屼笉鎼?鍜ㄨ鍚庢姤浠?</h2>
-      <p>浠锋牸鍚墍鏈夋暀鍏枫€佽澶囧拰鏉愭枡璐广€傝瘯鍚笉婊℃剰涓嶆敹璐癸紝姝ｅ紡璇惧悗濡傛湁鐗规畩鎯呭喌鎸夊墿浣欒鏃堕€€璐广€?/p>
+      <div class="section-eyebrow">课程费用</div>
+      <h2>明码标价，不搞"咨询后报价"</h2>
+      <p>价格含所有教具、设备和材料费。试听不满意不收费，正式课后如有特殊情况按剩余课时退费。</p>
     </div>
     <div class="pricing-grid reveal">
       <div class="pricing-card">
-        <div class="pricing-name">涔愰珮鏈哄櫒浜哄惎钂?/div>
-        <div class="pricing-age">4鈥? 宀?路 12 璇炬椂</div>
-        <div class="pricing-price">2,160<span> / 鏈?/span></div>
-        <div class="pricing-detail">鍚叏濂椾箰楂樻暀鍏蜂娇鐢?br>骞冲潎 180 鍏?璇炬椂</div>
+        <div class="pricing-name">乐高机器人启蒙</div>
+        <div class="pricing-age">4–7 岁 · 12 课时</div>
+        <div class="pricing-price">2,160<span> / 期</span></div>
+        <div class="pricing-detail">含全套乐高教具使用<br>平均 180 元/课时</div>
       </div>
       <div class="pricing-card pricing-card--featured">
-        <div class="pricing-badge">鏈€鍙楁杩?/div>
-        <div class="pricing-name">Scratch 鍒涙剰缂栫▼</div>
-        <div class="pricing-age">7鈥?1 宀?路 24 璇炬椂</div>
-        <div class="pricing-price">4,080<span> / 鏈?/span></div>
-        <div class="pricing-detail">鍚叏閮ㄨ浠剁礌鏉愬拰浣滃搧闆?br>骞冲潎 170 鍏?璇炬椂</div>
+        <div class="pricing-badge">最受欢迎</div>
+        <div class="pricing-name">Scratch 创意编程</div>
+        <div class="pricing-age">7–11 岁 · 24 课时</div>
+        <div class="pricing-price">4,080<span> / 期</span></div>
+        <div class="pricing-detail">含全部课件素材和作品集<br>平均 170 元/课时</div>
       </div>
       <div class="pricing-card">
-        <div class="pricing-name">Python 鎺㈡瀛﹂櫌</div>
-        <div class="pricing-age">10鈥?3 宀?路 32 璇炬椂</div>
-        <div class="pricing-price">5,120<span> / 鏈?/span></div>
-        <div class="pricing-detail">鍚湇鍔″櫒鍜?API 璋冪敤棰濆害<br>骞冲潎 160 鍏?璇炬椂</div>
+        <div class="pricing-name">Python 探案学院</div>
+        <div class="pricing-age">10–13 岁 · 32 课时</div>
+        <div class="pricing-price">5,120<span> / 期</span></div>
+        <div class="pricing-detail">含服务器和 API 调用额度<br>平均 160 元/课时</div>
       </div>
       <div class="pricing-card">
-        <div class="pricing-name">鏈哄櫒浜?+ C++ 绔炶禌</div>
-        <div class="pricing-age">12鈥?6 宀?路 48 璇炬椂</div>
-        <div class="pricing-price">8,640<span> / 鏈?/span></div>
-        <div class="pricing-detail">鍚叏濂?Arduino 濂椾欢锛堝彲甯﹁蛋锛?br>骞冲潎 180 鍏?璇炬椂</div>
+        <div class="pricing-name">机器人 + C++ 竞赛</div>
+        <div class="pricing-age">12–16 岁 · 48 课时</div>
+        <div class="pricing-price">8,640<span> / 期</span></div>
+        <div class="pricing-detail">含全套 Arduino 套件（可带走）<br>平均 180 元/课时</div>
       </div>
     </div>
     <div class="pricing-note reveal">
-      <p>鏀寔 3 鏈熷厤鎭垎鏈燂紝璇︽儏鍜ㄨ璇剧▼椤鹃棶闄堣€佸笀銆?/p>
+      <p>支持 3 期免息分期，详情咨询课程顾问陈老师。</p>
     </div>
   </div>
 </section>
@@ -946,25 +946,25 @@ body::before {
 <section class="section approach-section" id="approach">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">鎴戜滑鐨勬柟寮?/div>
-      <h2>涓嶆槸鏁欑紪绋嬶紝鏄暀"瑙ｅ喅闂"</h2>
-      <p>浠ｇ爜浼氳繃鏃讹紝浣嗘媶瑙ｉ棶棰樸€佽凯浠ｈ瘯閿欑殑鑳藉姏涓嶄細銆?/p>
+      <div class="section-eyebrow">我们的方式</div>
+      <h2>不是教编程，是教"解决问题"</h2>
+      <p>代码会过时，但拆解问题、迭代试错的能力不会。</p>
     </div>
     <div class="approach-list">
       <div class="approach-item reveal">
         <div class="approach-num">01</div>
-        <h4>椤圭洰椹卞姩</h4>
-        <p>姣忚妭璇句氦浠樹竴涓畬鏁翠綔鍝侊紝瀛╁瓙璧扮殑鏃跺€欐墜閲屾湁涓滆タ鍙互鐐€€銆?/p>
+        <h4>项目驱动</h4>
+        <p>每节课交付一个完整作品，孩子走的时候手里有东西可以炫耀。</p>
       </div>
       <div class="approach-item reveal">
         <div class="approach-num">02</div>
-        <h4>鍏堢姱閿欏啀绾犳</h4>
-        <p>涓嶇瓑瀛╁瓙鍑洪敊锛屾垜浠晠鎰忓煁 bug銆備慨濂藉畠鐨勯偅涓€鍒伙紝鐭ヨ瘑鎵嶇湡姝ｉ暱鍦ㄨ剳瀛愰噷銆?/p>
+        <h4>先犯错再纠正</h4>
+        <p>不等孩子出错，我们故意埋 bug。修好它的那一刻，知识才真正长在脑子里。</p>
       </div>
       <div class="approach-item reveal">
         <div class="approach-num">03</div>
-        <h4>涓嶆浛瀛╁瓙鍐欎唬鐮?/h4>
-        <p>鑰佸笀鐨勬墜鎸囩寮€閿洏銆傛瘡涓€琛岄兘鏄瀛愯嚜宸辨暡鐨勶紝鎱紝浣嗘墡瀹炪€?/p>
+        <h4>不替孩子写代码</h4>
+        <p>老师的手指离开键盘。每一行都是孩子自己敲的，慢，但扎实。</p>
       </div>
     </div>
   </div>
@@ -974,9 +974,9 @@ body::before {
 <section class="section" id="gallery">
   <div class="container" style="max-width:960px;">
     <div class="section-header reveal">
-      <div class="section-eyebrow">鏁欏鐜</div>
-      <h2>涓€涓瀛愭潵浜嗕笉鎯宠蛋鐨勫湴鏂?/h2>
-      <p>鏈夊湴姣€佺粯鏈拰涔愰珮澧欍€傛垜浠竷缃殑涓嶆槸鏁欏锛屾槸绗簩涓銆?/p>
+      <div class="section-eyebrow">教室环境</div>
+      <h2>一个孩子来了不想走的地方</h2>
+      <p>有地毯、绘本和乐高墙。我们布置的不是教室，是第二个家。</p>
     </div>
     <div class="gallery-grid reveal">
       <div class="gallery-item">
@@ -984,7 +984,7 @@ body::before {
           <div class="gallery-art-shape gallery-art-shape--a"></div>
           <div class="gallery-art-shape gallery-art-shape--b"></div>
           <div class="gallery-art-shape gallery-art-shape--c"></div>
-          <span class="gallery-art-label">鏁欏鍏ㄦ櫙</span>
+          <span class="gallery-art-label">教室全景</span>
         </div>
       </div>
       <div class="gallery-item">
@@ -992,7 +992,7 @@ body::before {
           <div class="gallery-art-shape gallery-art-shape--a"></div>
           <div class="gallery-art-shape gallery-art-shape--b"></div>
           <div class="gallery-art-shape gallery-art-shape--c"></div>
-          <span class="gallery-art-label">缂栫▼宸ヤ綅</span>
+          <span class="gallery-art-label">编程工位</span>
         </div>
       </div>
       <div class="gallery-item">
@@ -1000,7 +1000,7 @@ body::before {
           <div class="gallery-art-shape gallery-art-shape--a"></div>
           <div class="gallery-art-shape gallery-art-shape--b"></div>
           <div class="gallery-art-shape gallery-art-shape--c"></div>
-          <span class="gallery-art-label">涔愰珮澧?& 闃呰瑙?/span>
+          <span class="gallery-art-label">乐高墙 & 阅读角</span>
         </div>
       </div>
     </div>
@@ -1011,9 +1011,9 @@ body::before {
 <section class="section" id="projects">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">瀛﹀憳浣滃搧</div>
-      <h2>杩欎簺閮芥槸 10 宀佸瀛愬啓鐨?/h2>
-      <p>閮芥槸瀛﹀憳鑷繁鍋氱殑銆傛瘡涓€涓」鐩兘鏈夋簮鐮佸拰璁捐绗旇锛屾杩庢潵缈汇€?/p>
+      <div class="section-eyebrow">学员作品</div>
+      <h2>这些都是 10 岁孩子写的</h2>
+      <p>都是学员自己做的。每一个项目都有源码和设计笔记，欢迎来翻。</p>
     </div>
     <div class="projects-grid">
       <div class="project-card reveal">
@@ -1021,9 +1021,9 @@ body::before {
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="6" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/><rect x="26" y="6" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/><rect x="6" y="26" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/><rect x="26" y="26" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/></svg>
         </div>
         <div class="project-info">
-          <h5>澶┖鍨冨溇鏀堕泦鍣?/h5>
-          <p class="project-desc">鐢?Scratch 鍋氱殑鍙屼汉鍚堜綔娓告垙銆備竴涓帺瀹舵帶鍒堕鑸规敹闆嗗瀮鍦撅紝鍙︿竴涓帶鍒舵縺鍏夊鎵撻櫒鐭炽€傜敤鍒颁簡鍏嬮殕浣撱€佸箍鎾秷鎭拰鍙橀噺璁″垎銆?/p>
-          <span>灏忓畤 路 9 宀?路 Scratch</span>
+          <h5>太空垃圾收集器</h5>
+          <p class="project-desc">用 Scratch 做的双人合作游戏。一个玩家控制飞船收集垃圾，另一个控制激光塔打陨石。用到了克隆体、广播消息和变量计分。</p>
+          <span>小宇 · 9 岁 · Scratch</span>
         </div>
       </div>
       <div class="project-card reveal">
@@ -1031,9 +1031,9 @@ body::before {
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#3d8b7d" stroke-width="2.5"/><circle cx="24" cy="24" r="8" stroke="#3d8b7d" stroke-width="2.5"/><circle cx="24" cy="24" r="2.5" fill="#3d8b7d"/></svg>
         </div>
         <div class="project-info">
-          <h5>寰俊澶╂皵鎻愰啋鏈哄櫒浜?/h5>
-          <p class="project-desc">Python 鑴氭湰姣忓ぉ鏃╀笂 7 鐐硅嚜鍔ㄦ煡澶╂皵锛岄€氳繃 Server閰?鎺ㄩ€佸埌濡堝鐨勫井淇°€傜敤鍒颁簡 API 璋冪敤銆丣SON 瑙ｆ瀽鍜?schedule 瀹氭椂浠诲姟銆?/p>
-          <span>鏋滄灉 路 12 宀?路 Python</span>
+          <h5>微信天气提醒机器人</h5>
+          <p class="project-desc">Python 脚本每天早上 7 点自动查天气，通过 Server酱 推送到妈妈的微信。用到了 API 调用、JSON 解析和 schedule 定时任务。</p>
+          <span>果果 · 12 岁 · Python</span>
         </div>
       </div>
       <div class="project-card reveal">
@@ -1041,9 +1041,9 @@ body::before {
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M14 10h20l-6 28H20L14 10z" stroke="#c7526e" stroke-width="2.5" stroke-linejoin="round"/><circle cx="24" cy="26" r="4" stroke="#c7526e" stroke-width="2"/></svg>
         </div>
         <div class="project-info">
-          <h5>鑷姩鍨冨溇鍒嗙被瑁呯疆</h5>
-          <p class="project-desc">Arduino + 鏍戣帗娲?+ 鎽勫儚澶达紝鐢?Python 鍋氬浘鍍忚瘑鍒垽鏂瀮鍦剧绫伙紝Arduino 鎺у埗鑸垫満鎶婂瀮鍦炬帹鍒板搴旂殑妗堕噷銆傚競璧涗竴绛夊浣滃搧銆?/p>
-          <span>灏忛洦 + 灏忚埅 路 14 宀?路 Arduino + Python</span>
+          <h5>自动垃圾分类装置</h5>
+          <p class="project-desc">Arduino + 树莓派 + 摄像头，用 Python 做图像识别判断垃圾种类，Arduino 控制舵机把垃圾推到对应的桶里。市赛一等奖作品。</p>
+          <span>小雨 + 小航 · 14 岁 · Arduino + Python</span>
         </div>
       </div>
       <div class="project-card reveal">
@@ -1051,9 +1051,9 @@ body::before {
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="40" height="28" rx="4" stroke="#6ba5c7" stroke-width="2.5"/><rect x="12" y="32" width="24" height="6" rx="2" stroke="#6ba5c7" stroke-width="2.5"/><rect x="16" y="38" width="16" height="4" rx="2" stroke="#6ba5c7" stroke-width="2.5"/></svg>
         </div>
         <div class="project-info">
-          <h5>鍍忕礌椋庡闃叉父鎴?/h5>
-          <p class="project-desc">浠庨浂缁樺埗鐨勫儚绱犵礌鏉愶紝鍏闃插尽濉斿悇鏈変笉鍚屾敾鍑绘ā寮忥紝15 娉㈡晫浜洪毦搴﹂€掑銆傜敤鍒颁簡鍒楄〃瀛樺偍鏁屼汉璺緞銆佽嚜瀹氫箟绉湪绠＄悊濉旂殑鏀诲嚮閫昏緫銆?/p>
-          <span>璞嗚眴 路 11 宀?路 Scratch</span>
+          <h5>像素风塔防游戏</h5>
+          <p class="project-desc">从零绘制的像素素材，六种防御塔各有不同攻击模式，15 波敌人难度递增。用到了列表存储敌人路径、自定义积木管理塔的攻击逻辑。</p>
+          <span>豆豆 · 11 岁 · Scratch</span>
         </div>
       </div>
       <div class="project-card reveal">
@@ -1061,9 +1061,9 @@ body::before {
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="28" rx="3" stroke="#f4b836" stroke-width="2.5"/><rect x="16" y="4" width="16" height="6" rx="3" stroke="#f4b836" stroke-width="2.5"/><line x1="24" y1="4" x2="24" y2="10" stroke="#f4b836" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="#f4b836" stroke-width="2.5"/></svg>
         </div>
         <div class="project-info">
-          <h5>璇惧爞鎶界瓟鍣?/h5>
-          <p class="project-desc">Python + Tkinter 鍐欑殑灏忚蒋浠讹紝闅忔満鐐逛汉鍥炵瓟闂锛岀偣杩囩殑涓嶄細閲嶅銆傝瀛︽牎鑰佸笀鐪熺殑鐢ㄥ湪浜嗚鍫備笂锛屽叏鐝?45 涓汉鐨勫悕瀛楅兘鍦ㄩ噷闈€?/p>
-          <span>涔愪箰 路 13 宀?路 Python</span>
+          <h5>课堂抽答器</h5>
+          <p class="project-desc">Python + Tkinter 写的小软件，随机点人回答问题，点过的不会重复。被学校老师真的用在了课堂上，全班 45 个人的名字都在里面。</p>
+          <span>乐乐 · 13 岁 · Python</span>
         </div>
       </div>
       <div class="project-card reveal">
@@ -1071,9 +1071,9 @@ body::before {
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="16" height="32" rx="3" stroke="#968b82" stroke-width="2.5"/><circle cx="14" cy="16" r="3" fill="#968b82"/><line x1="14" y1="22" x2="14" y2="32" stroke="#968b82" stroke-width="2.5" stroke-linecap="round"/><line x1="8" y1="36" x2="20" y2="36" stroke="#968b82" stroke-width="2"/><rect x="28" y="14" width="14" height="20" rx="3" stroke="#968b82" stroke-width="2.5"/></svg>
         </div>
         <div class="project-info">
-          <h5>鑷姩娴囪姳绯荤粺</h5>
-          <p class="project-desc">Arduino + 鍦熷￥婀垮害浼犳劅鍣?+ 姘存车銆傛娴嬪埌鍦熷￥澶共灏辫嚜鍔ㄦ祰姘达紝鎵嬫満涓婅兘鐪嬪埌婀垮害鏇茬嚎銆傝€佹潹鑰佸笀甯︾潃鎷嗕簡涓€涓簾鏃у姞婀垮櫒鏀硅鐨勬按娉点€?/p>
-          <span>瀛愭兜 路 15 宀?路 Arduino</span>
+          <h5>自动浇花系统</h5>
+          <p class="project-desc">Arduino + 土壤湿度传感器 + 水泵。检测到土壤太干就自动浇水，手机上能看到湿度曲线。老杨老师带着拆了一个废旧加湿器改装的水泵。</p>
+          <span>子涵 · 15 岁 · Arduino</span>
         </div>
       </div>
     </div>
@@ -1084,81 +1084,81 @@ body::before {
 <section class="section" id="testimonials">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">瀹堕暱鍙嶉</div>
-      <h2>瀹堕暱璇寸殑锛屾瘮鎴戜滑璇寸殑闈犺氨</h2>
-      <p>鍏ㄦ槸鐪熷疄瀹堕暱鐨勫師璇濓紝涓€涓瓧娌℃敼銆?/p>
+      <div class="section-eyebrow">家长反馈</div>
+      <h2>家长说的，比我们说的靠谱</h2>
+      <p>全是真实家长的原话，一个字没改。</p>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-header">
-          <div class="testimonial-avatar">鍒?/div>
+          <div class="testimonial-avatar">刘</div>
           <div>
-            <div class="testimonial-name">鏉惧北婀栦笢鑱屾暀鑱屽伐瀹堕暱</div>
-            <div class="testimonial-tag">瀛╁瓙 8 宀?路 鍦ㄨ Scratch 璇剧▼</div>
+            <div class="testimonial-name">松山湖东职教职工家长</div>
+            <div class="testimonial-tag">孩子 8 岁 · 在读 Scratch 课程</div>
           </div>
         </div>
         <div class="testimonial-body">
-          <p class="testimonial-msg">涔嬪墠鍦ㄥ鏁欎粬鑷繁鎼Н鏈ㄧ紪绋嬶紝涓夊ぉ灏辨斁寮冧簡銆傛潵 nino 涔嬪悗瀹屽叏涓嶄竴鏍封€斺€斿ぇ楣忚€佸笀浼氭晠鎰忓湪浠ｇ爜閲岀暀 bug锛岃瀛╁瓙鑷繁鍘讳慨銆備慨濂戒箣鍚庨偅涓垚灏辨劅锛屽悆楗兘鍦ㄨ窡鎴戜滑璁层€?/p>
+          <p class="testimonial-msg">之前在家教他自己搭积木编程，三天就放弃了。来 nino 之后完全不一样——大鹏老师会故意在代码里留 bug，让孩子自己去修。修好之后那个成就感，吃饭都在跟我们讲。</p>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-header">
-          <div class="testimonial-avatar">闄?/div>
+          <div class="testimonial-avatar">陈</div>
           <div>
-            <div class="testimonial-name">鏉惧北婀栭敠缁ｅ北娌冲皬鍖哄闀?/div>
-            <div class="testimonial-tag">瀛╁瓙 6 宀?路 鍦ㄨ涔愰珮鏈哄櫒浜哄惎钂?/div>
+            <div class="testimonial-name">松山湖锦绣山河小区家长</div>
+            <div class="testimonial-tag">孩子 6 岁 · 在读乐高机器人启蒙</div>
           </div>
         </div>
         <div class="testimonial-body">
-          <p class="testimonial-msg">濞冩墠鍏瞾锛屾垜浠ヤ负浠栧潗涓嶄綇銆傜涓€娆¤瘯鍚鎼簡涓€涓細鍔ㄧ殑椋庢墖锛屽叏绋嬫病鎵炬垜銆傜幇鍦ㄦ瘡鍛ㄥ叚鑷繁涓诲姩绌块瀷鍌垜鍑洪棬锛岃瑕佸幓'鏈哄櫒浜哄鏍?銆?/p>
+          <p class="testimonial-msg">娃才六岁，我以为他坐不住。第一次试听课搭了一个会动的风扇，全程没找我。现在每周六自己主动穿鞋催我出门，说要去'机器人学校'。</p>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-header">
-          <div class="testimonial-avatar">鍛?/div>
+          <div class="testimonial-avatar">周</div>
           <div>
-            <div class="testimonial-name">骞跨鏁欒亴宸ュ灞?/div>
-            <div class="testimonial-tag">瀛╁瓙 12 宀?路 鍦ㄨ Python 璇剧▼</div>
+            <div class="testimonial-name">广科教职工家属</div>
+            <div class="testimonial-tag">孩子 12 岁 · 在读 Python 课程</div>
           </div>
         </div>
         <div class="testimonial-body">
-          <p class="testimonial-msg">Mia 鑰佸笀澶細鏁欎簡銆傛垜瀹跺瀛愪箣鍓嶅湪鍒殑鏈烘瀯瀛?Python锛屼笂浜嗗崐骞村彧浼?print銆傛潵杩欒竟绗笁鑺傝灏辫嚜宸卞啓浜嗕釜澶╂皵鏌ヨ鑴氭湰锛屽洖瀹跺叴濂嬪湴缁欐垜浠叏瀹舵紨绀恒€?/p>
+          <p class="testimonial-msg">Mia 老师太会教了。我家孩子之前在别的机构学 Python，上了半年只会 print。来这边第三节课就自己写了个天气查询脚本，回家兴奋地给我们全家演示。</p>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-header">
-          <div class="testimonial-avatar">榛?/div>
+          <div class="testimonial-avatar">黄</div>
           <div>
-            <div class="testimonial-name">鏉惧北婀栫繝鐝戞咕灏忓尯瀹堕暱</div>
-            <div class="testimonial-tag">瀛╁瓙 10 宀?路 鍦ㄨ Scratch 璇剧▼</div>
+            <div class="testimonial-name">松山湖翠珑湾小区家长</div>
+            <div class="testimonial-tag">孩子 10 岁 · 在读 Scratch 课程</div>
           </div>
         </div>
         <div class="testimonial-body">
-          <p class="testimonial-msg">鏈€鎵撳姩鎴戠殑鏄?瀹堕暱鍏ㄧ▼鏃佸惉'銆傛垜灏卞潗鍦ㄦ暀瀹ゅ悗闈㈢殑娌欏彂涓婏紝鐪嬭€佸笀鎬庝箞寮曞瀛╁瓙鑷繁瑙ｅ喅闂銆傜湡鐨勬槸鑷繁涓嶅府瀛╁瓙鍐欎唬鐮侊紝椤跺闂竴鍙?浣犺寰楅棶棰樺嚭鍦ㄥ摢'銆?/p>
+          <p class="testimonial-msg">最打动我的是'家长全程旁听'。我就坐在教室后面的沙发上，看老师怎么引导孩子自己解决问题。真的是自己不帮孩子写代码，顶多问一句'你觉得问题出在哪'。</p>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-header">
-          <div class="testimonial-avatar">寮?/div>
+          <div class="testimonial-avatar">张</div>
           <div>
-            <div class="testimonial-name">骞跨绗簩瀹跺睘鍖哄闀?/div>
-            <div class="testimonial-tag">瀛╁瓙 14 宀?路 鍦ㄨ鏈哄櫒浜虹珵璧涜绋?/div>
+            <div class="testimonial-name">广科第二家属区家长</div>
+            <div class="testimonial-tag">孩子 14 岁 · 在读机器人竞赛课程</div>
           </div>
         </div>
         <div class="testimonial-body">
-          <p class="testimonial-msg">鏉庡崥澹湡鐨勬槸瀹濊棌鑰佸笀銆傚甫鐫€瀛╁瓙鎷嗗簾鐢靛櫒銆佺剨鐢佃矾鏉匡紝涓婃鍘绘帴瀛╁瓙鐪嬪埌浠栨弧鎵嬬剨閿′笣锛岀溂鐫涗寒寰椾笉琛屻€備粖骞村競璧涙嬁浜嗕竴绛夊锛屾劅璋?nino锛?/p>
+          <p class="testimonial-msg">李博士真的是宝藏老师。带着孩子拆废电器、焊电路板，上次去接孩子看到他满手焊锡丝，眼睛亮得不行。今年市赛拿了一等奖，感谢 nino！</p>
         </div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-header">
-          <div class="testimonial-avatar">鏋?/div>
+          <div class="testimonial-avatar">林</div>
           <div>
-            <div class="testimonial-name">鏉惧北婀栦腑蹇冨皬瀛﹀闀?/div>
-            <div class="testimonial-tag">瀛╁瓙 9 宀?路 鍦ㄨ Scratch 璇剧▼</div>
+            <div class="testimonial-name">松山湖中心小学家长</div>
+            <div class="testimonial-tag">孩子 9 岁 · 在读 Scratch 课程</div>
           </div>
         </div>
         <div class="testimonial-body">
-          <p class="testimonial-msg">璇曞惉涓婂畬鎴戞病绔嬪埢鎶ワ紝闄堣€佸笀涔熸病鍌€傝繃浜嗕竴鍛ㄦ垜涓诲姩鑱旂郴濂癸紝杩樻槸鍘熸潵鐨勪环鏍笺€傝繖绉嶄笉鎺ㄩ攢鐨勬€佸害鍙嶈€岃浜烘斁蹇冦€傜幇鍦ㄥ浜嗗崐骞达紝瀛╁瓙宸茬粡寮€濮嬫暀鐝笂鍚屽浜嗐€?/p>
+          <p class="testimonial-msg">试听上完我没立刻报，陈老师也没催。过了一周我主动联系她，还是原来的价格。这种不推销的态度反而让人放心。现在学了半年，孩子已经开始教班上同学了。</p>
         </div>
       </div>
     </div>
@@ -1169,9 +1169,9 @@ body::before {
 <section class="section approach-section" id="teachers">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">瀵煎笀鍥㈤槦</div>
-      <h2>鍐欎唬鐮佸帀瀹崇殑浜哄緢澶?br>浣嗘噦瀛╁瓙鐨勪笉澶?/h2>
-      <p>鍏ㄥ憳璁＄畻鏈鸿儗鏅?+ 3 骞翠互涓婂効绔ユ暀鑲茬粡楠屻€?/p>
+      <div class="section-eyebrow">导师团队</div>
+      <h2>写代码厉害的人很多<br>但懂孩子的不多</h2>
+      <p>全员计算机背景 + 3 年以上儿童教育经验。</p>
     </div>
     <div class="teachers-grid">
       <div class="teacher-card reveal">
@@ -1179,9 +1179,9 @@ body::before {
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="11" r="5" stroke="#e8652e" stroke-width="2"/><path d="M7 29c0-5 4-9 9-9s9 4 9 9" stroke="#e8652e" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="teacher-info">
-          <h4>闃块箯鑰佸笀</h4>
-          <span class="teacher-role">鍒涘浜?路 Scratch / 鏈哄櫒浜轰富璁?/span>
-          <p>骞垮伐璁＄畻鏈虹郴姣曚笟锛屽湪娣卞湷涓€瀹惰蒋浠跺叕鍙稿啓浜嗕笁骞村悗绔紝瑙夊緱娌℃剰鎬濓紝鍥炴澗灞辨箹寮€浜嗚繖闂村伐浣滃銆傛渶鎿呴暱鎶婂鏉傜殑姒傚康鎷嗘垚瀛╁瓙鑳藉惉鎳傜殑姣斿柣鈥斺€?寰幆灏卞儚浣犲姣忓ぉ鍌綘鍐欎綔涓?銆?/p>
+          <h4>阿鹏老师</h4>
+          <span class="teacher-role">创始人 · Scratch / 机器人主讲</span>
+          <p>广工计算机系毕业，在深圳一家软件公司写了三年后端，觉得没意思，回松山湖开了这间工作室。最擅长把复杂的概念拆成孩子能听懂的比喻——'循环就像你妈每天催你写作业'。</p>
         </div>
       </div>
       <div class="teacher-card reveal">
@@ -1189,9 +1189,9 @@ body::before {
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="11" r="5" stroke="#3d8b7d" stroke-width="2"/><path d="M7 29c0-5 4-9 9-9s9 4 9 9" stroke="#3d8b7d" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="teacher-info">
-          <h4>灏忛箍鑰佸笀</h4>
-          <span class="teacher-role">Python / 绔炶禌杈呭</span>
-          <p>涓滆帪鐞嗗伐瀛﹂櫌杞欢宸ョ▼涓撲笟锛屽ぇ瀛︽湡闂存嬁杩囪摑妗ユ澂鐪佽禌涓€绛夊銆傛瘯涓氬悗鍦ㄦ澗灞辨箹涓€瀹?IT 鍏徃鍋氫簡涓€骞村紑鍙戯紝鍙戠幇鏁欏瀛愭瘮鍐欎唬鐮佸紑蹇冿紝杈炶亴鍔犲叆 nino銆備笂璇句粠涓嶅彂鑴炬皵锛屼絾瀛╁瓙浠嚭濂囧湴鍚ス璇濄€?/p>
+          <h4>小鹿老师</h4>
+          <span class="teacher-role">Python / 竞赛辅导</span>
+          <p>东莞理工学院软件工程专业，大学期间拿过蓝桥杯省赛一等奖。毕业后在松山湖一家 IT 公司做了一年开发，发现教孩子比写代码开心，辞职加入 nino。上课从不发脾气，但孩子们出奇地听她话。</p>
         </div>
       </div>
       <div class="teacher-card reveal">
@@ -1199,9 +1199,9 @@ body::before {
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="11" r="5" stroke="#6ba5c7" stroke-width="2"/><path d="M7 29c0-5 4-9 9-9s9 4 9 9" stroke="#6ba5c7" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="teacher-info">
-          <h4>鑰佹潹鑰佸笀</h4>
-          <span class="teacher-role">涔愰珮鍚挋 / 纭欢璇剧▼</span>
-          <p>涔嬪墠鍦ㄦ澗灞辨箹涓€瀹舵満鍣ㄤ汉鏁欒偛鏈烘瀯鍋氫簡鍥涘勾涓绘暀锛屽甫杩?200 澶氫釜瀛╁瓙銆傚姩鎵嬭兘鍔涙瀬寮猴紝鑳戒粠涓€鍫嗗簾鏃ч浂浠堕噷鎷煎嚭涓€涓細璺戠殑鏈哄櫒鐙椼€備俊濂?鎷嗗潖鍗佷釜鐜╁叿锛屽浼氫竴涓師鐞?銆?/p>
+          <h4>老杨老师</h4>
+          <span class="teacher-role">乐高启蒙 / 硬件课程</span>
+          <p>之前在松山湖一家机器人教育机构做了四年主教，带过 200 多个孩子。动手能力极强，能从一堆废旧零件里拼出一个会跑的机器狗。信奉'拆坏十个玩具，学会一个原理'。</p>
         </div>
       </div>
     </div>
@@ -1212,47 +1212,47 @@ body::before {
 <section class="section map-section" id="contact">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">鎵惧埌鎴戜滑</div>
-      <h2>杩囨潵杞浆</h2>
-      <p>鏉惧北婀栦腑蹇冨尯锛屾ゼ涓嬪仠杞︽柟渚裤€傛潵涔嬪墠寰俊璇翠竴澹板氨琛屻€?/p>
+      <div class="section-eyebrow">找到我们</div>
+      <h2>过来转转</h2>
+      <p>松山湖中心区，楼下停车方便。来之前微信说一声就行。</p>
     </div>
     <div class="map-container reveal">
       <div>
         <div class="map-frame">
           <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#e8e3d9;gap:8px;font-size:0.875rem;color:var(--ink-muted)">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="17" r="6" stroke="#e8652e" stroke-width="2.5"/><path d="M12 35c0-5 3.6-9 8-9s8 4 8 9" stroke="#e8652e" stroke-width="2.5" stroke-linecap="round"/></svg>
-            涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?br>鎬婚儴涓夎矾 8 鍙?路 3 妤?301
+            东莞市松山湖科技产业园<br>总部三路 8 号 · 3 楼 301
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
           <div class="qr-card" style="max-width:none">
             <div class="qr-img">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="12" height="12" rx="2" stroke="#e8652e" stroke-width="3"/><rect x="28" y="8" width="12" height="12" rx="2" stroke="#e8652e" stroke-width="3"/><rect x="8" y="28" width="12" height="12" rx="2" stroke="#e8652e" stroke-width="3"/><circle cx="34" cy="34" r="6" stroke="#e8652e" stroke-width="3"/></svg>
-              <span style="margin-top:4px">寰俊鎵竴鎵?/span>
+              <span style="margin-top:4px">微信扫一扫</span>
             </div>
-            <h4>璇剧▼椤鹃棶 闄堣€佸笀</h4>
-            <p>186-7691-2345<br>宸ヤ綔鏃?2 灏忔椂鍐呭洖澶?/p>
+            <h4>课程顾问 陈老师</h4>
+            <p>186-7691-2345<br>工作日 2 小时内回复</p>
           </div>
           <div class="qr-card" style="max-width:none">
             <div class="qr-img">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="12" height="12" rx="2" stroke="#3d8b7d" stroke-width="3"/><rect x="28" y="8" width="12" height="12" rx="2" stroke="#3d8b7d" stroke-width="3"/><rect x="8" y="28" width="12" height="12" rx="2" stroke="#3d8b7d" stroke-width="3"/><circle cx="34" cy="34" r="6" stroke="#3d8b7d" stroke-width="3"/></svg>
-              <span style="margin-top:4px">寰俊鎵竴鎵?/span>
+              <span style="margin-top:4px">微信扫一扫</span>
             </div>
-            <h4>nino缂栫▼瀹為獙瀹?/h4>
-            <p>鍏虫敞鍏紬鍙疯幏鍙?br>璇剧▼鏇存柊鍜屾椿鍔ㄩ€氱煡</p>
+            <h4>nino编程实验室</h4>
+            <p>关注公众号获取<br>课程更新和活动通知</p>
           </div>
         </div>
       </div>
       <div>
         <div class="map-info">
-          <h3>浜ら€氭寚寮?/h3>
+          <h3>交通指引</h3>
           <div class="map-item">
             <div class="map-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7" r="3" stroke="#e8652e" stroke-width="1.5"/><path d="M4 16c0-3 2.2-5 5-5s5 2 5 5" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
             <div>
-              <div class="map-label">鍦板潃</div>
-              <div class="map-value">涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?br>鎬婚儴涓夎矾 8 鍙?路 涓囩鐢熸椿骞垮満鏃?路 3 妤?301</div>
+              <div class="map-label">地址</div>
+              <div class="map-value">东莞市松山湖科技产业园<br>总部三路 8 号 · 万科生活广场旁 · 3 楼 301</div>
             </div>
           </div>
           <div class="map-item">
@@ -1260,8 +1260,8 @@ body::before {
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#e8652e" stroke-width="1.5"/><circle cx="11" cy="11" r="1.5" stroke="#e8652e" stroke-width="1.5"/></svg>
             </div>
             <div>
-              <div class="map-label">鍏氦</div>
-              <div class="map-value">328 璺€?47 璺€佹澗灞辨箹绌挎宸村＋ 1 鍙风嚎<br>"鎬婚儴涓夎矾"绔欎笅杞︽琛?2 鍒嗛挓</div>
+              <div class="map-label">公交</div>
+              <div class="map-value">328 路、347 路、松山湖穿梭巴士 1 号线<br>"总部三路"站下车步行 2 分钟</div>
             </div>
           </div>
           <div class="map-item">
@@ -1269,8 +1269,8 @@ body::before {
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#e8652e" stroke-width="1.5"/><circle cx="9" cy="9" r="3" stroke="#e8652e" stroke-width="1.5"/></svg>
             </div>
             <div>
-              <div class="map-label">鍋滆溅</div>
-              <div class="map-value">妤间笅鍦伴潰鍋滆溅鍦猴紝鍓?2 灏忔椂鍏嶈垂<br>鍛ㄦ湯杞︿綅鍏呰冻</div>
+              <div class="map-label">停车</div>
+              <div class="map-value">楼下地面停车场，前 2 小时免费<br>周末车位充足</div>
             </div>
           </div>
           <div class="map-item">
@@ -1278,8 +1278,8 @@ body::before {
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#e8652e" stroke-width="1.5"/><path d="M9 5v4l2.5 2.5" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <div class="map-label">钀ヤ笟鏃堕棿</div>
-              <div class="map-value">鍛ㄤ笁鑷冲懆浜?14:00鈥?0:00<br>鍛ㄥ叚鑷冲懆鏃?9:00鈥?8:00<br><span style="color:#e8652e;font-size:0.8125rem">鍛ㄤ竴銆佸懆浜屼紤鎭?/span></div>
+              <div class="map-label">营业时间</div>
+              <div class="map-value">周三至周五 14:00–20:00<br>周六至周日 9:00–18:00<br><span style="color:#e8652e;font-size:0.8125rem">周一、周二休息</span></div>
             </div>
           </div>
         </div>
@@ -1292,17 +1292,17 @@ body::before {
 <section class="section cta-section" id="enroll">
   <div class="container">
     <div class="cta-block reveal">
-      <h2>甯﹀▋鏉ヨ瘯涓€鑺傦紝涓嶆敹璐?/h2>
-      <p>30 鍒嗛挓锛屽瀛愬甫璧颁竴涓嚜宸卞仛鐨勪綔鍝併€備綘鍧愬湪鏃佽竟鐪嬶紝瑙夊緱鍊煎啀鎶ュ悕銆?/p>
+      <h2>带娃来试一节，不收费</h2>
+      <p>30 分钟，孩子带走一个自己做的作品。你坐在旁边看，觉得值再报名。</p>
       <a href="seedlab-trial.html" class="btn btn-fill" style="font-size:1.0625rem; padding:16px 36px;">
-        棰勭害璇曞惉
+        预约试听
       </a>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  <p>涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?路 0769-88001234 路 nino缂栫▼瀹為獙瀹?漏 2026</p>
+  <p>东莞市松山湖科技产业园 · 0769-88001234 · nino编程实验室 © 2026</p>
 </footer>
 
 <script>
