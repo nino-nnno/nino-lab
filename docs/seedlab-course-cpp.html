@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鏈哄櫒浜?+ C++ 绔炶禌钀?鈥?nino缂栫▼瀹為獙瀹?/title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf3; --paper: #f7f2e7; --ink: #2d2420; --ink-light: #5c524b;
+  --ink-muted: #968b82; --orange: #e8652e; --sky: #6ba5c7;
+  --radius-sm:12px; --radius-md:20px;
+  --font-display:'Fraunces',serif; --font-body:'Nunito',sans-serif;
+  --ease-smooth: cubic-bezier(0.22,0.61,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E")}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:rgba(253,250,243,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05)}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.logo-text{font-family:'Brush Script MT','Lucida Handwriting',cursive;font-size:1.75rem;color:#e91e63;line-height:1}
+.logo-sub{font-family:var(--font-body);font-size:0.625rem;font-weight:700;color:#ad1457;letter-spacing:0.08em;text-transform:uppercase;line-height:1}
+.nav-back{color:var(--ink-light);text-decoration:none;font-weight:600;font-size:0.9375rem}
+.nav-back:hover{color:var(--orange)}
+
+main{position:relative;z-index:1;padding:120px 24px 80px;max-width:780px;margin:0 auto}
+.breadcrumb{font-size:0.8125rem;color:var(--ink-muted);font-weight:600;margin-bottom:32px}
+.breadcrumb a{color:var(--orange);text-decoration:none}
+.course-hero{margin-bottom:56px}
+.course-badge{display:inline-block;font-weight:700;font-size:0.75rem;padding:4px 12px;border-radius:100px;background:rgba(107,165,199,0.12);color:var(--sky);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:16px}
+.course-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.75rem);font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+.course-hero .subtitle{font-size:1.125rem;color:var(--ink-light);line-height:1.7}
+
+.content-section{margin-bottom:48px}
+.content-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid rgba(107,165,199,0.2)}
+.content-section p{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:14px}
+.content-section ul{margin-bottom:14px;padding-left:20px}
+.content-section li{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:6px}
+
+.highlight-box{background:#eef5fa;border-radius:var(--radius-md);padding:28px 32px;margin:32px 0;border-left:4px solid var(--sky)}
+.highlight-box h3{font-family:var(--font-display);font-size:1.125rem;font-weight:600;margin-bottom:8px}
+.highlight-box p{font-size:0.9375rem;color:var(--ink-light);line-height:1.75;margin:0}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px}
+.info-card{background:#fff;border-radius:var(--radius-sm);padding:20px;border:1px solid rgba(0,0,0,0.04)}
+.info-card .label{font-size:0.75rem;color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.info-card .value{font-weight:700;font-size:1.0625rem}
+
+.cta-block{text-align:center;padding:48px 32px;background:#fff;border-radius:var(--radius-md);margin-top:56px;border:1px solid rgba(0,0,0,0.04)}
+.cta-block h3{font-family:var(--font-display);font-size:1.375rem;font-weight:700;margin-bottom:8px}
+.cta-block p{color:var(--ink-light);margin-bottom:20px}
+.btn{font-family:var(--font-body);font-weight:700;font-size:0.9375rem;padding:14px 28px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s var(--ease-smooth);background:var(--sky);color:#fff}
+.btn:hover{background:#4d8bb5;transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,165,199,0.3)}
+
+.footer{position:relative;z-index:1;border-top:1px solid rgba(0,0,0,0.05);padding:32px 24px;text-align:center}
+.footer p{color:var(--ink-muted);font-size:0.875rem}
+
+@media(max-width:768px){main{padding:100px 16px 60px}.highlight-box{padding:20px 24px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+<a href="seedlab.html" class="logo"><span class="logo-text">nino</span><span class="logo-sub">缂栫▼瀹為獙瀹?/span></a>
+<a href="seedlab.html#courses" class="nav-back">鈫?杩斿洖璇剧▼</a>
+</div></nav>
+
+<main>
+<div class="breadcrumb"><a href="seedlab.html">棣栭〉</a> / <a href="seedlab.html#courses">璇剧▼</a> / 鏈哄櫒浜?+ C++ 绔炶禌</div>
+
+<div class="course-hero">
+<span class="course-badge">12鈥?6 宀?路 48 璇炬椂 路 4 浜哄皬鐝?/span>
+<h1>鏈哄櫒浜?+ C++ 绔炶禌钀?/h1>
+<p class="subtitle">纭欢 + 绠楁硶鍙岀嚎鎺ㄨ繘锛岄潰鍚戜俊濂ヨ禌鍜屾満鍣ㄤ汉绔炶禌銆傝繖鍫傝鐨勭洰鐨勬槸璁╁瀛愮湡姝ｆ嫢鏈変竴椤瑰彲浠ュ啓杩涚畝鍘嗙殑鎶€鑳姐€?/p>
+</div>
+
+<div class="content-section">
+<h2>涓轰粈涔堟槸 C++锛屼笉鏄户缁?Python</h2>
+<p>Python 閫傚悎鍏ラ棬鍜屾棩甯稿伐鍏峰紑鍙戯紝浣嗗鏋滀綘瑕佸弬鍔犱俊鎭濂ユ灄鍖瑰厠绔炶禌锛圢OI 绯诲垪锛夛紝浣犲繀椤荤敤 C++銆傝繖鏄‖鎬ц瀹氥€?/p>
+<p>浠?Python 杞埌 C++锛屽瀛愰潰涓翠笁涓彴闃讹細</p>
+<ul>
+<li><strong>璇硶闂ㄦ锛?/strong>C++ 闇€瑕佹樉寮忓０鏄庡彉閲忕被鍨嬶紙int, float, char锛夛紝闇€瑕佹墜鍔ㄧ鐞嗗唴瀛橈紝闇€瑕佺悊瑙ｆ寚閽堝拰寮曠敤銆傚涔犳儻浜?Python "鎬庝箞鍐欓兘琛?鐨勫瀛愭潵璇达紝杩欐槸绗竴娆＄湡姝ｉ潰瀵逛竴闂?涓ヨ皑"鐨勮瑷€銆?/li>
+<li><strong>缂栬瘧姒傚康锛?/strong>Python 鏄В閲婃墽琛岀殑锛屽啓瀹屽氨璺戙€侰++ 闇€瑕佸厛缂栬瘧鎴愬彲鎵ц鏂囦欢鍐嶈繍琛屻€傝繖涓?涓棿涓€姝?鏄緢澶氬瀛愮殑璁ょ煡鐩插尯銆?/li>
+<li><strong>绠楁硶鎬濈淮锛?/strong>绔炶禌棰樼殑闅剧偣涓嶆槸璇硶锛屾槸绠楁硶鈥斺€斿姩鎬佽鍒掋€佽椽蹇冪瓥鐣ャ€佸浘璁恒€佹悳绱㈠壀鏋濄€傚瀛愯浠?鍐欎唬鐮?鍗囩骇鍒?鎯虫竻妤氬啀鍐?銆?/li>
+</ul>
+<p>鎴戜滑鐨勫簲瀵圭瓥鐣ユ槸锛?strong>鍙岀嚎骞惰銆備竴鏉＄‖浠剁嚎锛屼竴鏉＄畻娉曠嚎銆傜‖浠惰礋璐ｄ繚鎸佸叴瓒ｏ紙鏈哄櫒浜虹湡鐨勪細璺戯紒锛夛紝绠楁硶璐熻矗鎵撳ソ绔炶禌鍩虹銆?/strong>涓ょ嚎鍦?鎺у埗閫昏緫"涓婂ぉ鐒朵氦姹団€斺€旀満鍣ㄤ汉鐨勫贰绾跨畻娉曟湰璐ㄤ笂灏辨槸璐績绛栫暐鍜?PID 鎺у埗銆?/p>
+</div>
+
+<div class="content-section">
+<h2>纭欢绾匡細Arduino 浠庡叆闂ㄥ埌鍒涢€?/h2>
+<p>姣忎釜瀛╁瓙棰嗕竴濂?Arduino 寮€鍙戞澘 + 浼犳劅鍣ㄥ浠讹紝浠庨浂寮€濮嬶細</p>
+<ul>
+<li><strong>绗竴闃舵锛?-8 璇撅級锛?/strong>鐐逛寒 LED銆佹帶鍒惰埖鏈恒€佽鍙栦紶鎰熷櫒鏁版嵁銆傜悊瑙?浠ｇ爜鎺у埗鐗╃悊涓栫晫"鐨勫熀鏈ā鍨嬨€?/li>
+<li><strong>绗簩闃舵锛?-16 璇撅級锛?/strong>缁勮灏忚溅搴曠洏锛屽姞鍏ヨ秴澹版尝閬块殰銆佺孩澶栧贰绾裤€佽摑鐗欓仴鎺с€傛瘡鑺傝瑙ｅ喅涓€涓叿浣撳伐绋嬮棶棰樸€?/li>
+<li><strong>绗笁闃舵锛?7-32 璇撅級锛?/strong>鑷€夐」鐩柟鍚戔€斺€旀櫤鑳藉灞呮帶鍒跺櫒銆佽嚜鍔ㄦ祰鑺辩郴缁熴€佹満姊拌噦銆?D 鎵撳嵃澶栧３銆傝€佹潹鑰佸笀鎻愪緵涓€瀵逛竴鎶€鏈寚瀵笺€?/li>
+</ul>
+</div>
+
+<div class="content-section">
+<h2>绠楁硶绾匡細浠庢毚鍔涘埌浼樺寲</h2>
+<p>纭欢璇惧崰涓€鍗婅鏃讹紙鍓?24 鑺備负涓伙級锛岀畻娉曡璐┛鍏ㄦ湡锛?/p>
+<ul>
+<li><strong>鍏ラ棬锛?-8 璇撅級锛?/strong>C++ 鍩虹璇硶銆佽緭鍏ヨ緭鍑恒€佹暟缁勩€佸瓧绗︿覆澶勭悊銆傜敤娲涜胺鍏ラ棬棰樺拰 Codeforces 800 鍒嗛缁冩墜銆?/li>
+<li><strong>杩涢樁锛?-20 璇撅級锛?/strong>STL锛坴ector, map, set, queue锛夈€佸鏉傚害鍒嗘瀽銆佽椽蹇冦€佷簩鍒嗐€佸熀纭€鍔ㄦ€佽鍒掋€傚埛娲涜胺鏅強缁勯鐩€?/li>
+<li><strong>鍐插埡锛?1-48 璇撅級锛?/strong>鍥捐鍩虹锛圖FS, BFS, 鏈€鐭矾寰勶級銆侀珮绾?DP锛堣儗鍖呫€佸尯闂淬€佺姸鍘嬶級銆佹悳绱紭鍖栵紙鍓灊銆丄*锛夈€傚埛 CSP-J/S 鐪熼銆?/li>
+</ul>
+<p>灏忛箍鑰佸笀浼氫负姣忎釜鏈夋剰鍙傚姞绔炶禌鐨勫鐢熷埗瀹氫釜浜哄埛棰樿鍒掞紝骞跺畾鏈熷仛妯℃嫙璧涘拰澶嶇洏銆傛垜浠笉淇濊瘉姣忎釜瀛╁瓙閮借兘鎷垮鈥斺€斾絾淇濊瘉姣忎釜瀛╁瓙閮借兘鍦ㄧ畻娉曟€濈淮涓婅法涓€涓彴闃躲€?/p>
+</div>
+
+<div class="highlight-box">
+<h3>鍘诲勾鐨勪簨</h3>
+<p>灏忚埅鏉ョ殑鏃跺€?13 宀侊紝Scratch 鍩虹涓嶉敊浣嗘病纰拌繃浠ｇ爜銆傜涓€鑺傝鍐?LED 闂儊锛屼粬鐩潃鐏湅浜嗕簲鍒嗛挓锛岀劧鍚庨棶浜嗕竴鍙ワ細"鑰佸笀锛岃繖涓伅闂殑鑺傚鑳界敤浠ｇ爜鎺у埗鍚楋紵"涓€骞村悗锛屼粬鎷夸簡涓滆帪甯傛満鍣ㄤ汉绔炶禌鍒濅腑缁勪竴绛夊銆備粬鐨勫弬璧涗綔鍝佹槸涓€涓兘鑷姩璇嗗埆鍨冨溇绉嶇被骞跺垎鎷ｇ殑瑁呯疆鈥斺€擜rduino 鎺у埗鑸垫満鍜屼紶閫佸甫锛屾憚鍍忓ご鐢?Python 鍋氬浘鍍忚瘑鍒€備竴涓」鐩法浜嗕袱绉嶈瑷€銆佷袱涓钩鍙般€?/p>
+</div>
+
+<div class="content-section">
+<h2>杩欓棬璇惧鍗囧鐨勫疄闄呭府鍔?/h2>
+<p>鍦ㄤ笢鑾烇紝绉戞妧鐗归暱鐢熸槸鍒濆崌楂樼殑涓€鏉℃寮忚矾寰勩€傚嚑鎵€閲嶇偣楂樹腑姣忓勾閮芥湁鏈哄櫒浜?淇℃伅瀛︾珵璧涚殑鐗归暱鐢熷悕棰濄€傛垜浠笉鍋?鍖呰繃"鐨勬壙璇衡€斺€旈偅涓嶆槸鏁欒偛鈥斺€斾絾鎴戜滑鎻愪緵瀹屾暣鐨勭珵璧涜鍒掋€佹姤鍚嶆寚瀵煎拰妯℃嫙璁粌锛岃瀛╁瓙濡傛灉鐪熺殑鎰熷叴瓒ｏ紝鏈変竴鏉℃竻鏅扮殑璺彲浠ヨ蛋銆?/p>
+</div>
+
+<div class="info-grid">
+<div class="info-card"><div class="label">閫傚悎骞撮緞</div><div class="value">12鈥?6 宀?/div></div>
+<div class="info-card"><div class="label">璇炬椂</div><div class="value">48 鑺?/ 鏈?/div></div>
+<div class="info-card"><div class="label">鐝瀷</div><div class="value">1 瀵?4</div></div>
+<div class="info-card"><div class="label">鏃堕暱</div><div class="value">90 鍒嗛挓/鑺?/div></div>
+</div>
+
+<div class="cta-block">
+<h3>璧涢亾宸茬粡鍦ㄩ偅閲屼簡</h3>
+<p>璇曞惉璇句笂锛屽瀛愪細鐢?Arduino 鐐逛寒绗竴鐩?LED鈥斺€旂劧鍚庤瀹冩寜鑷繁璁惧畾鐨勮妭濂忛棯鐑併€?/p>
+<a href="seedlab-trial.html" class="btn">棰勭害鍏嶈垂璇曞惉 鈫?/a>
+</div>
+</main>
+
+<footer class="footer"><p>涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?路 0769-88001234 路 nino缂栫▼瀹為獙瀹?漏 2026</p></footer>
+</body>
+</html>
