@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>机器人 + C++ 竞赛营 — nino编程实验室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf3; --paper: #f7f2e7; --ink: #2d2420; --ink-light: #5c524b;
+  --ink-muted: #968b82; --orange: #e8652e; --sky: #6ba5c7;
+  --radius-sm:12px; --radius-md:20px;
+  --font-display:'Fraunces',serif; --font-body:'Nunito',sans-serif;
+  --ease-smooth: cubic-bezier(0.22,0.61,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E")}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:rgba(253,250,243,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05)}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.logo-text{font-family:'Brush Script MT','Lucida Handwriting',cursive;font-size:1.75rem;color:#e91e63;line-height:1}
+.logo-sub{font-family:var(--font-body);font-size:0.625rem;font-weight:700;color:#ad1457;letter-spacing:0.08em;text-transform:uppercase;line-height:1}
+.nav-back{color:var(--ink-light);text-decoration:none;font-weight:600;font-size:0.9375rem}
+.nav-back:hover{color:var(--orange)}
+
+main{position:relative;z-index:1;padding:120px 24px 80px;max-width:780px;margin:0 auto}
+.breadcrumb{font-size:0.8125rem;color:var(--ink-muted);font-weight:600;margin-bottom:32px}
+.breadcrumb a{color:var(--orange);text-decoration:none}
+.course-hero{margin-bottom:56px}
+.course-badge{display:inline-block;font-weight:700;font-size:0.75rem;padding:4px 12px;border-radius:100px;background:rgba(107,165,199,0.12);color:var(--sky);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:16px}
+.course-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.75rem);font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+.course-hero .subtitle{font-size:1.125rem;color:var(--ink-light);line-height:1.7}
+
+.content-section{margin-bottom:48px}
+.content-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid rgba(107,165,199,0.2)}
+.content-section p{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:14px}
+.content-section ul{margin-bottom:14px;padding-left:20px}
+.content-section li{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:6px}
+
+.highlight-box{background:#eef5fa;border-radius:var(--radius-md);padding:28px 32px;margin:32px 0;border-left:4px solid var(--sky)}
+.highlight-box h3{font-family:var(--font-display);font-size:1.125rem;font-weight:600;margin-bottom:8px}
+.highlight-box p{font-size:0.9375rem;color:var(--ink-light);line-height:1.75;margin:0}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px}
+.info-card{background:#fff;border-radius:var(--radius-sm);padding:20px;border:1px solid rgba(0,0,0,0.04)}
+.info-card .label{font-size:0.75rem;color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.info-card .value{font-weight:700;font-size:1.0625rem}
+
+.cta-block{text-align:center;padding:48px 32px;background:#fff;border-radius:var(--radius-md);margin-top:56px;border:1px solid rgba(0,0,0,0.04)}
+.cta-block h3{font-family:var(--font-display);font-size:1.375rem;font-weight:700;margin-bottom:8px}
+.cta-block p{color:var(--ink-light);margin-bottom:20px}
+.btn{font-family:var(--font-body);font-weight:700;font-size:0.9375rem;padding:14px 28px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s var(--ease-smooth);background:var(--sky);color:#fff}
+.btn:hover{background:#4d8bb5;transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,165,199,0.3)}
+
+.footer{position:relative;z-index:1;border-top:1px solid rgba(0,0,0,0.05);padding:32px 24px;text-align:center}
+.footer p{color:var(--ink-muted);font-size:0.875rem}
+
+@media(max-width:768px){main{padding:100px 16px 60px}.highlight-box{padding:20px 24px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+<a href="seedlab.html" class="logo"><span class="logo-text">nino</span><span class="logo-sub">编程实验室</span></a>
+<a href="seedlab.html#courses" class="nav-back">← 返回课程</a>
+</div></nav>
+
+<main>
+<div class="breadcrumb"><a href="seedlab.html">首页</a> / <a href="seedlab.html#courses">课程</a> / 机器人 + C++ 竞赛</div>
+
+<div class="course-hero">
+<span class="course-badge">12–16 岁 · 48 课时 · 4 人小班</span>
+<h1>机器人 + C++ 竞赛营</h1>
+<p class="subtitle">硬件 + 算法双线推进，面向信奥赛和机器人竞赛。这堂课的目的是让孩子真正拥有一项可以写进简历的技能。</p>
+</div>
+
+<div class="content-section">
+<h2>为什么是 C++，不是继续 Python</h2>
+<p>Python 适合入门和日常工具开发，但如果你要参加信息学奥林匹克竞赛（NOI 系列），你必须用 C++。这是硬性规定。</p>
+<p>从 Python 转到 C++，孩子面临三个台阶：</p>
+<ul>
+<li><strong>语法门槛：</strong>C++ 需要显式声明变量类型（int, float, char），需要手动管理内存，需要理解指针和引用。对习惯了 Python "怎么写都行"的孩子来说，这是第一次真正面对一门"严谨"的语言。</li>
+<li><strong>编译概念：</strong>Python 是解释执行的，写完就跑。C++ 需要先编译成可执行文件再运行。这个"中间一步"是很多孩子的认知盲区。</li>
+<li><strong>算法思维：</strong>竞赛题的难点不是语法，是算法——动态规划、贪心策略、图论、搜索剪枝。孩子要从"写代码"升级到"想清楚再写"。</li>
+</ul>
+<p>我们的应对策略是：<strong>双线并行。一条硬件线，一条算法线。硬件负责保持兴趣（机器人真的会跑！），算法负责打好竞赛基础。</strong>两线在"控制逻辑"上天然交汇——机器人的巡线算法本质上就是贪心策略和 PID 控制。</p>
+</div>
+
+<div class="content-section">
+<h2>硬件线：Arduino 从入门到创造</h2>
+<p>每个孩子领一套 Arduino 开发板 + 传感器套件，从零开始：</p>
+<ul>
+<li><strong>第一阶段（1-8 课）：</strong>点亮 LED、控制舵机、读取传感器数据。理解"代码控制物理世界"的基本模型。</li>
+<li><strong>第二阶段（9-16 课）：</strong>组装小车底盘，加入超声波避障、红外巡线、蓝牙遥控。每节课解决一个具体工程问题。</li>
+<li><strong>第三阶段（17-32 课）：</strong>自选项目方向——智能家居控制器、自动浇花系统、机械臂、3D 打印外壳。老杨老师提供一对一技术指导。</li>
+</ul>
+</div>
+
+<div class="content-section">
+<h2>算法线：从暴力到优化</h2>
+<p>硬件课占一半课时（前 24 节为主），算法课贯穿全期：</p>
+<ul>
+<li><strong>入门（1-8 课）：</strong>C++ 基础语法、输入输出、数组、字符串处理。用洛谷入门题和 Codeforces 800 分题练手。</li>
+<li><strong>进阶（9-20 课）：</strong>STL（vector, map, set, queue）、复杂度分析、贪心、二分、基础动态规划。刷洛谷普及组题目。</li>
+<li><strong>冲刺（21-48 课）：</strong>图论基础（DFS, BFS, 最短路径）、高级 DP（背包、区间、状压）、搜索优化（剪枝、A*）。刷 CSP-J/S 真题。</li>
+</ul>
+<p>小鹿老师会为每个有意参加竞赛的学生制定个人刷题计划，并定期做模拟赛和复盘。我们不保证每个孩子都能拿奖——但保证每个孩子都能在算法思维上跨一个台阶。</p>
+</div>
+
+<div class="highlight-box">
+<h3>去年的事</h3>
+<p>小航来的时候 13 岁，Scratch 基础不错但没碰过代码。第一节课写 LED 闪烁，他盯着灯看了五分钟，然后问了一句："老师，这个灯闪的节奏能用代码控制吗？"一年后，他拿了东莞市机器人竞赛初中组一等奖。他的参赛作品是一个能自动识别垃圾种类并分拣的装置——Arduino 控制舵机和传送带，摄像头用 Python 做图像识别。一个项目跨了两种语言、两个平台。</p>
+</div>
+
+<div class="content-section">
+<h2>这门课对升学的实际帮助</h2>
+<p>在东莞，科技特长生是初升高的一条正式路径。几所重点高中每年都有机器人/信息学竞赛的特长生名额。我们不做"包过"的承诺——那不是教育——但我们提供完整的竞赛规划、报名指导和模拟训练，让孩子如果真的感兴趣，有一条清晰的路可以走。</p>
+</div>
+
+<div class="info-grid">
+<div class="info-card"><div class="label">适合年龄</div><div class="value">12–16 岁</div></div>
+<div class="info-card"><div class="label">课时</div><div class="value">48 节 / 期</div></div>
+<div class="info-card"><div class="label">班型</div><div class="value">1 对 4</div></div>
+<div class="info-card"><div class="label">时长</div><div class="value">90 分钟/节</div></div>
+</div>
+
+<div class="cta-block">
+<h3>赛道已经在那里了</h3>
+<p>试听课上，孩子会用 Arduino 点亮第一盏 LED——然后让它按自己设定的节奏闪烁。</p>
+<a href="seedlab-trial.html" class="btn">预约免费试听 →</a>
+</div>
+</main>
+
+<footer class="footer"><p>东莞市松山湖科技产业园 · 0769-88001234 · nino编程实验室 © 2026</p></footer>
+</body>
+</html>

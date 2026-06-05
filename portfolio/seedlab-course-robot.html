@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乐高机器人启蒙 — nino编程实验室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf3; --paper: #f7f2e7; --ink: #2d2420; --ink-light: #5c524b;
+  --ink-muted: #968b82; --orange: #e8652e; --teal: #3d8b7d;
+  --radius-sm:12px; --radius-md:20px;
+  --font-display:'Fraunces',serif; --font-body:'Nunito',sans-serif;
+  --ease-smooth: cubic-bezier(0.22,0.61,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E")}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:rgba(253,250,243,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05)}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.logo-text{font-family:'Brush Script MT','Lucida Handwriting',cursive;font-size:1.75rem;color:#e91e63;line-height:1}
+.logo-sub{font-family:var(--font-body);font-size:0.625rem;font-weight:700;color:#ad1457;letter-spacing:0.08em;text-transform:uppercase;line-height:1}
+.nav-back{color:var(--ink-light);text-decoration:none;font-weight:600;font-size:0.9375rem}
+.nav-back:hover{color:var(--orange)}
+
+main{position:relative;z-index:1;padding:120px 24px 80px;max-width:780px;margin:0 auto}
+.breadcrumb{font-size:0.8125rem;color:var(--ink-muted);font-weight:600;margin-bottom:32px}
+.breadcrumb a{color:var(--orange);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.course-hero{margin-bottom:56px}
+.course-badge{display:inline-block;font-weight:700;font-size:0.75rem;padding:4px 12px;border-radius:100px;background:rgba(232,101,46,0.12);color:var(--orange);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:16px}
+.course-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.75rem);font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+.course-hero .subtitle{font-size:1.125rem;color:var(--ink-light);line-height:1.7}
+
+.content-section{margin-bottom:48px}
+.content-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid rgba(232,101,46,0.2)}
+.content-section p{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:14px}
+.content-section ul{margin-bottom:14px;padding-left:20px}
+.content-section li{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:6px}
+
+.highlight-box{background:#fef6ed;border-radius:var(--radius-md);padding:28px 32px;margin:32px 0;border-left:4px solid var(--orange)}
+.highlight-box h3{font-family:var(--font-display);font-size:1.125rem;font-weight:600;margin-bottom:8px}
+.highlight-box p{font-size:0.9375rem;color:var(--ink-light);line-height:1.75;margin:0}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px}
+.info-card{background:#fff;border-radius:var(--radius-sm);padding:20px;border:1px solid rgba(0,0,0,0.04)}
+.info-card .label{font-size:0.75rem;color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.info-card .value{font-weight:700;font-size:1.0625rem}
+
+.cta-block{text-align:center;padding:48px 32px;background:#fff;border-radius:var(--radius-md);margin-top:56px;border:1px solid rgba(0,0,0,0.04)}
+.cta-block h3{font-family:var(--font-display);font-size:1.375rem;font-weight:700;margin-bottom:8px}
+.cta-block p{color:var(--ink-light);margin-bottom:20px}
+.btn{font-family:var(--font-body);font-weight:700;font-size:0.9375rem;padding:14px 28px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s var(--ease-smooth);background:var(--orange);color:#fff}
+.btn:hover{background:#d4551f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,101,46,0.3)}
+
+.footer{position:relative;z-index:1;border-top:1px solid rgba(0,0,0,0.05);padding:32px 24px;text-align:center}
+.footer p{color:var(--ink-muted);font-size:0.875rem}
+
+@media(max-width:768px){main{padding:100px 16px 60px}.highlight-box{padding:20px 24px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+<a href="seedlab.html" class="logo"><span class="logo-text">nino</span><span class="logo-sub">编程实验室</span></a>
+<a href="seedlab.html#courses" class="nav-back">← 返回课程</a>
+</div></nav>
+
+<main>
+<div class="breadcrumb"><a href="seedlab.html">首页</a> / <a href="seedlab.html#courses">课程</a> / 乐高机器人启蒙</div>
+
+<div class="course-hero">
+<span class="course-badge">4–7 岁 · 12 课时 · 4 人小班</span>
+<h1>乐高机器人启蒙</h1>
+<p class="subtitle">不教编程语法，不教电路原理。让孩子在拼拼拆拆中，建立对"机器为什么会动"的第一直觉。</p>
+</div>
+
+<div class="content-section">
+<h2>这门课的逻辑</h2>
+<p>四到七岁的孩子，手指精细动作还没发育完全，抽象思维能力也刚刚起步。你跟他讲"齿轮传动比"，他听不懂；但你给他两个齿轮，让他自己拼在一起转一转，他马上就知道"大的转得慢，小的转得快"。</p>
+<p>这就是这门课的底层逻辑：<strong>所有的知识都是"玩"出来的，不是"教"进去的。</strong>每节课只设一个模糊的目标——比如"搭一个会自动开关的门"——然后让孩子自己去试。电机装反了，门往外开而不是往里开；齿轮咬不上，手一推就散架。每一个错误都是一次学习，修好它的那一刻，原理就长在脑子里了。</p>
+<p>我们不急着引入编程。这个阶段最重要的不是写代码，而是建立<strong>物理直觉</strong>：力是怎么传递的？轮子为什么能转弯？传感器能"看到"什么？这些问题，用手回答就够了。</p>
+</div>
+
+<div class="content-section">
+<h2>授课方式</h2>
+<p>每节课 60 分钟，分三个阶段：</p>
+<ul>
+<li><strong>前 15 分钟</strong>——情境引入。老师讲一个小故事（比如"小明的猫被困在自动门外面了"），引出今天的搭建任务。不讲原理，只提问题。</li>
+<li><strong>中间 35 分钟</strong>——自由搭建。孩子拿到一盒乐高积木、一个电机和需要的传感器，自己动手。老师坐在旁边，只做三件事：提问（"你觉得齿轮装在这里会不会卡住？"）、指路（"试试把轮子换个方向？"）、鼓掌（"哇，它动了！"），绝对不动手替孩子拼。</li>
+<li><strong>最后 10 分钟</strong>——展示与复盘。每个孩子展示自己的作品，讲一讲搭建过程中遇到了什么问题、怎么解决的。老师补充点知识点，但不会超过三句话。</li>
+</ul>
+</div>
+
+<div class="highlight-box">
+<h3>一个真实的上课场景</h3>
+<p>上周的课主题是"自动门"。四个孩子每人拿到一套相同的零件。小杰把电机直接接在齿轮上，门一开就停不下来，齿轮打滑发出咔咔声。老师没帮他修，只是问了一句："你想想真正的自动门，开了之后会不会一直开着？"小杰想了三十秒，加了一个触碰传感器——门碰到墙就停。那一刻他蹦起来了。</p>
+</div>
+
+<div class="content-section">
+<h2>孩子能学到什么</h2>
+<ul>
+<li><strong>机械直觉：</strong>齿轮咬合、皮带传动、杠杆原理——不是背概念，是手记住的感觉。</li>
+<li><strong>工程思维：</strong>搭一个东西要先想结构，拆的时候要从上往下。学会"先规划再动手"。</li>
+<li><strong>受挫能力：</strong>乐高拼错了一定会散。散了三次之后，孩子不再哭，而是默默捡起来重拼。这种韧性比任何知识都值钱。</li>
+<li><strong>表达能力：</strong>每节课最后要展示作品并讲述过程，"我做了什么、遇到了什么问题、怎么解决的"——这对 5 岁孩子来说是巨大的锻炼。</li>
+<li><strong>合作意识：</strong>两个孩子的齿轮箱要连在一起才能完成一个复杂动作，他们必须商量谁装哪一部分。</li>
+</ul>
+</div>
+
+<div class="content-section">
+<h2>课程进度</h2>
+<p>12 节课分成三个单元：</p>
+<ul>
+<li><strong>单元一（1-4 课）· 认识零件：</strong>齿轮、轴、梁、销子。每节课搭一个简单机械（手摇风扇、弹力小车、跷跷板）。</li>
+<li><strong>单元二（5-8 课）· 动起来：</strong>引入电机和电池盒，搭出第一个会自己动的作品（自动门、旋转木马、传送带）。</li>
+<li><strong>单元三（9-12 课）· 感应世界：</strong>触碰传感器和红外传感器。机器人开始能"感受"环境（避障小车、自动分拣机）。</li>
+</ul>
+</div>
+
+<div class="info-grid">
+<div class="info-card"><div class="label">适合年龄</div><div class="value">4–7 岁</div></div>
+<div class="info-card"><div class="label">课时</div><div class="value">12 节 / 期</div></div>
+<div class="info-card"><div class="label">班型</div><div class="value">1 对 4</div></div>
+<div class="info-card"><div class="label">时长</div><div class="value">60 分钟/节</div></div>
+</div>
+
+<div class="cta-block">
+<h3>孩子会喜欢吗？来试一节就知道了</h3>
+<p>40 分钟试听课，孩子自己搭一个会动的作品带走。你在旁边看。</p>
+<a href="seedlab-trial.html" class="btn">预约免费试听 →</a>
+</div>
+</main>
+
+<footer class="footer"><p>东莞市松山湖科技产业园 · 0769-88001234 · nino编程实验室 © 2026</p></footer>
+</body>
+</html>

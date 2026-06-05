@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scratch 创意编程 — nino编程实验室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf3; --paper: #f7f2e7; --ink: #2d2420; --ink-light: #5c524b;
+  --ink-muted: #968b82; --orange: #e8652e; --teal: #3d8b7d;
+  --radius-sm:12px; --radius-md:20px;
+  --font-display:'Fraunces',serif; --font-body:'Nunito',sans-serif;
+  --ease-smooth: cubic-bezier(0.22,0.61,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E")}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;background:rgba(253,250,243,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05)}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.logo-text{font-family:'Brush Script MT','Lucida Handwriting',cursive;font-size:1.75rem;color:#e91e63;line-height:1}
+.logo-sub{font-family:var(--font-body);font-size:0.625rem;font-weight:700;color:#ad1457;letter-spacing:0.08em;text-transform:uppercase;line-height:1}
+.nav-back{color:var(--ink-light);text-decoration:none;font-weight:600;font-size:0.9375rem}
+.nav-back:hover{color:var(--orange)}
+
+main{position:relative;z-index:1;padding:120px 24px 80px;max-width:780px;margin:0 auto}
+.breadcrumb{font-size:0.8125rem;color:var(--ink-muted);font-weight:600;margin-bottom:32px}
+.breadcrumb a{color:var(--orange);text-decoration:none}
+.course-hero{margin-bottom:56px}
+.course-badge{display:inline-block;font-weight:700;font-size:0.75rem;padding:4px 12px;border-radius:100px;background:rgba(61,139,125,0.12);color:var(--teal);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:16px}
+.course-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.75rem);font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+.course-hero .subtitle{font-size:1.125rem;color:var(--ink-light);line-height:1.7}
+
+.content-section{margin-bottom:48px}
+.content-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid rgba(61,139,125,0.2)}
+.content-section p{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:14px}
+.content-section ul{margin-bottom:14px;padding-left:20px}
+.content-section li{font-size:1rem;color:var(--ink-light);line-height:1.85;margin-bottom:6px}
+
+.highlight-box{background:#edf6f3;border-radius:var(--radius-md);padding:28px 32px;margin:32px 0;border-left:4px solid var(--teal)}
+.highlight-box h3{font-family:var(--font-display);font-size:1.125rem;font-weight:600;margin-bottom:8px}
+.highlight-box p{font-size:0.9375rem;color:var(--ink-light);line-height:1.75;margin:0}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:32px}
+.info-card{background:#fff;border-radius:var(--radius-sm);padding:20px;border:1px solid rgba(0,0,0,0.04)}
+.info-card .label{font-size:0.75rem;color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.info-card .value{font-weight:700;font-size:1.0625rem}
+
+.cta-block{text-align:center;padding:48px 32px;background:#fff;border-radius:var(--radius-md);margin-top:56px;border:1px solid rgba(0,0,0,0.04)}
+.cta-block h3{font-family:var(--font-display);font-size:1.375rem;font-weight:700;margin-bottom:8px}
+.cta-block p{color:var(--ink-light);margin-bottom:20px}
+.btn{font-family:var(--font-body);font-weight:700;font-size:0.9375rem;padding:14px 28px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s var(--ease-smooth);background:var(--teal);color:#fff}
+.btn:hover{background:#2d6b5e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(61,139,125,0.3)}
+
+.footer{position:relative;z-index:1;border-top:1px solid rgba(0,0,0,0.05);padding:32px 24px;text-align:center}
+.footer p{color:var(--ink-muted);font-size:0.875rem}
+
+@media(max-width:768px){main{padding:100px 16px 60px}.highlight-box{padding:20px 24px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+<a href="seedlab.html" class="logo"><span class="logo-text">nino</span><span class="logo-sub">编程实验室</span></a>
+<a href="seedlab.html#courses" class="nav-back">← 返回课程</a>
+</div></nav>
+
+<main>
+<div class="breadcrumb"><a href="seedlab.html">首页</a> / <a href="seedlab.html#courses">课程</a> / Scratch 创意编程</div>
+
+<div class="course-hero">
+<span class="course-badge">7–11 岁 · 24 课时 · 6 人小班</span>
+<h1>Scratch 创意编程</h1>
+<p class="subtitle">24 节课，24 个完整游戏。从"接苹果"到"植物大战僵尸"，每个项目都是一次从想法到成品的完整旅程。</p>
+</div>
+
+<div class="content-section">
+<h2>为什么用 Scratch</h2>
+<p>七岁到十一岁，是编程启蒙的黄金窗口。太早了，抽象思维跟不上；太晚了，孩子可能已经被"编程好难"的刻板印象劝退了。Scratch 是最好的入口——它不需要打字，不需要记语法，孩子拖拽彩色积木就能让角色动起来。从"我写代码"变成了"我在创造一个世界"，这个心理转换是 Scratch 最了不起的地方。</p>
+<p>但很多 Scratch 课的问题是：<strong>老师演示一步，孩子跟一步。</strong>结果是 24 节课上完，孩子能做老师教的那些项目，但你让他自己从零开始做一个新东西——他傻掉了。我们不做这种课。</p>
+</div>
+
+<div class="content-section">
+<h2>我们的教法：先做，再拆，再重做</h2>
+<p>每节课采取"三遍法"：</p>
+<ul>
+<li><strong>第一遍——跟着做（20分钟）：</strong>老师演示一个游戏的核心机制（比如"接苹果"里的随机下落和得分），孩子跟着做出一个能跑的版本。这一遍是保证每个人都能跟上。</li>
+<li><strong>第二遍——拆解分析（15分钟）：</strong>老师把刚才的项目拆开，一个一个积木问孩子："这个'随机数'积木在干什么？如果没有它会怎么样？"让孩子真正理解每一块积木的作用，而不是照抄。</li>
+<li><strong>第三遍——自己改造（20分钟）：</strong>老师提一个开放问题："你能不能让苹果越来越快？""能不能加一个炸弹，碰到就扣分？"孩子根据自己的想法修改项目。这一遍是最重要的——从模仿到创造的跨越就发生在这一步。</li>
+</ul>
+</div>
+
+<div class="highlight-box">
+<h3>上节课的改造案例</h3>
+<p>"接苹果"游戏做完后，9 岁的小宇加了三个改造：苹果会斜着飞、每接 10 个苹果会出一个金色苹果（分值翻倍）、加了一个 BOSS 苹果接三次才消失。这些都是他自己想出来的，老师只帮他查了一次 Scratch 的"克隆体"用法。课后他妈妈发微信说，小宇回家又打开 Scratch 改了俩小时。</p>
+</div>
+
+<div class="content-section">
+<h2>课程结构</h2>
+<p>24 节课分成四个单元，难度螺旋上升：</p>
+<ul>
+<li><strong>单元一（1-6 课）· 会动就行：</strong>运动、外观、事件。做弹球、接苹果、躲避障碍。核心概念：坐标、循环、条件判断。</li>
+<li><strong>单元二（7-12 课）· 越来越像游戏：</strong>变量、克隆体、广播消息。做贪吃蛇、打砖块、2048。核心概念：数据、状态管理、模块化。</li>
+<li><strong>单元三（13-18 课）· 复杂的玩意：</strong>列表、自定义积木、字符串处理。做文字冒险游戏、RPG 背包系统、简易画板。核心概念：函数、数据结构。</li>
+<li><strong>单元四（19-24 课）· 毕业项目：</strong>每个孩子自己选题，四周时间从零做出一个完整的游戏。老师只提供技术咨询，不做任何设计决策。往届作品包括：像素风塔防、多关卡解谜、双人对战格斗。</li>
+</ul>
+</div>
+
+<div class="content-section">
+<h2>不只是写代码</h2>
+<p>Scratch 的界面是英文的。我们用这个自然的机会做英文启蒙——变量名用英文取，注释用英文写（简单的）。24 节课下来，孩子不知不觉掌握了四五十个编程相关的英文词汇。</p>
+<p>每节课的最后五分钟是"代码走读"——一个孩子打开自己的项目，从头到尾给其他人讲他的代码逻辑。这个环节对表达能力和逻辑梳理的帮助，比编程本身还大。</p>
+</div>
+
+<div class="info-grid">
+<div class="info-card"><div class="label">适合年龄</div><div class="value">7–11 岁</div></div>
+<div class="info-card"><div class="label">课时</div><div class="value">24 节 / 期</div></div>
+<div class="info-card"><div class="label">班型</div><div class="value">1 对 6</div></div>
+<div class="info-card"><div class="label">时长</div><div class="value">55 分钟/节</div></div>
+</div>
+
+<div class="cta-block">
+<h3>让孩子做第一个属于自己的游戏</h3>
+<p>试听课上，孩子就会完成一个完整的 Scratch 小游戏。</p>
+<a href="seedlab-trial.html" class="btn">预约免费试听 →</a>
+</div>
+</main>
+
+<footer class="footer"><p>东莞市松山湖科技产业园 · 0769-88001234 · nino编程实验室 © 2026</p></footer>
+</body>
+</html>
