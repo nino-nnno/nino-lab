@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nino缂栫▼瀹為獙瀹?鈥?灏戝効缂栫▼鍚挋宸ヤ綔瀹?/title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fdfaf3;
+  --paper: #f7f2e7;
+  --paper-dark: #ede5d5;
+  --ink: #2d2420;
+  --ink-light: #5c524b;
+  --ink-muted: #968b82;
+  --orange: #e8652e;
+  --orange-light: #f2854b;
+  --mustard: #f4b836;
+  --teal: #3d8b7d;
+  --berry: #c7526e;
+  --sky: #6ba5c7;
+  --green: #7a9e5a;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Nunito', 'Segoe UI', sans-serif;
+  --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 鈹€鈹€鈹€ Paper Texture 鈹€鈹€鈹€ */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* 鈹€鈹€鈹€ Nav 鈹€鈹€鈹€ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 24px;
+  background: rgba(253,250,243,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.nav-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.375rem;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.logo-text {
+  font-family: 'Brush Script MT', 'Lucida Handwriting', 'Georgia', cursive;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #e91e63;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.logo-sub {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #ad1457;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: var(--ink-light); text-decoration: none;
+  font-size: 0.9375rem; font-weight: 600;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--orange); }
+.nav-btn {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.875rem; padding: 10px 22px;
+  border-radius: 100px;
+  background: var(--orange); color: #fff;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-smooth);
+}
+.nav-btn:hover { background: var(--orange-light); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(232,101,46,0.3); }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--ink); padding: 4px; }
+
+/* 鈹€鈹€鈹€ Hero 鈹€鈹€鈹€ */
+.hero {
+  position: relative; z-index: 1;
+  padding: 140px 24px 100px;
+  max-width: 1120px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-tag {
+  display: inline-block;
+  font-weight: 700; font-size: 0.8125rem;
+  color: var(--orange); letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  background: rgba(232,101,46,0.08);
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700; line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--orange);
+  position: relative;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute; bottom: 2px; left: 0; right: 0;
+  height: 6px; background: rgba(244,184,54,0.4);
+  border-radius: 3px; z-index: -1;
+}
+.hero p {
+  font-size: 1.0625rem; color: var(--ink-light);
+  max-width: 440px; margin-bottom: 32px;
+  line-height: 1.7;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 0.9375rem; padding: 14px 28px;
+  border-radius: 100px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.3s var(--ease-smooth);
+  cursor: pointer; border: none;
+}
+.btn-fill {
+  background: var(--orange); color: #fff;
+  box-shadow: 0 4px 16px rgba(232,101,46,0.25);
+}
+.btn-fill:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,101,46,0.35); }
+.btn-line {
+  background: transparent; color: var(--ink);
+  border: 2px solid var(--paper-dark);
+}
+.btn-line:hover { border-color: var(--orange); color: var(--orange); }
+
+/* Hero Visual */
+.hero-visual {
+  position: relative;
+  height: 380px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-illustration {
+  position: relative;
+  width: 100%; height: 100%;
+}
+.hero-blob {
+  position: absolute;
+  border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
+  animation: blobMorph 12s ease-in-out infinite;
+}
+.hero-blob--lg {
+  width: 280px; height: 280px;
+  background: linear-gradient(135deg, #fef0e5, #fde0c8);
+  top: 60px; left: 60px;
+  box-shadow: 0 30px 60px rgba(232,101,46,0.1);
+}
+.hero-blob--sm {
+  width: 160px; height: 160px;
+  background: linear-gradient(135deg, #e8f4f1, #d0ebe4);
+  top: 160px; left: 220px;
+  box-shadow: 0 20px 40px rgba(61,139,125,0.12);
+  animation-delay: -4s;
+}
+.hero-blob--xs {
+  width: 90px; height: 90px;
+  background: linear-gradient(135deg, #fef7e0, #fdf0c0);
+  top: 40px; left: 280px;
+  box-shadow: 0 16px 32px rgba(244,184,54,0.15);
+  animation-delay: -8s;
+}
+@keyframes blobMorph {
+  0%, 100% { border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%; }
+  25% { border-radius: 55% 45% 50% 50% / 52% 42% 58% 48%; }
+  50% { border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%; }
+  75% { border-radius: 52% 48% 58% 42% / 42% 55% 45% 58%; }
+}
+.hero-float-cards {
+  position: absolute; top: 20px; left: 140px; z-index: 2;
+}
+.float-card {
+  background: #fff; border-radius: var(--radius-sm);
+  padding: 16px 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  font-weight: 700; font-size: 0.9375rem;
+  display: flex; align-items: center; gap: 10px;
+  animation: floatCard 5s ease-in-out infinite;
+}
+.float-card:first-child { margin-bottom: 12px; animation-delay: -2s; }
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+.float-dot--orange { background: var(--orange); }
+.float-dot--mustard { background: var(--mustard); }
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* 鈹€鈹€鈹€ Sections 鈹€鈹€鈹€ */
+.section {
+  position: relative; z-index: 1;
+  padding: 72px 24px;
+}
+.section-header {
+  text-align: center; max-width: 560px; margin: 0 auto 60px;
+}
+.section-eyebrow {
+  font-weight: 700; font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--orange); margin-bottom: 12px;
+}
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.2; margin-bottom: 14px;
+}
+.section-header p {
+  color: var(--ink-light); font-size: 1rem;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+
+/* 鈹€鈹€鈹€ Courses 鈹€鈹€鈹€ */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.course-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  transition: all 0.45s var(--ease-smooth);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.course-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-smooth);
+  pointer-events: none; z-index: 0;
+}
+.course-card:nth-child(1) { background: #fef6ed; }
+.course-card:nth-child(2) { background: #edf6f3; }
+.course-card:nth-child(3) { background: #fdf2f5; }
+.course-card:nth-child(4) { background: #eef5fa; }
+.course-card:nth-child(1)::after { background: radial-gradient(circle at 50% 0%, rgba(232,101,46,0.12), transparent 70%); }
+.course-card:nth-child(2)::after { background: radial-gradient(circle at 50% 0%, rgba(61,139,125,0.12), transparent 70%); }
+.course-card:nth-child(3)::after { background: radial-gradient(circle at 50% 0%, rgba(199,82,110,0.12), transparent 70%); }
+.course-card:nth-child(4)::after { background: radial-gradient(circle at 50% 0%, rgba(107,165,199,0.12), transparent 70%); }
+.course-card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+.course-card:hover::after { opacity: 1; }
+.course-card > * { position: relative; z-index: 1; }
+.course-age {
+  display: inline-block;
+  font-weight: 800; font-size: 0.75rem;
+  padding: 4px 12px; border-radius: 100px;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+.course-card:nth-child(1) .course-age { background: rgba(232,101,46,0.15); color: var(--orange); }
+.course-card:nth-child(2) .course-age { background: rgba(61,139,125,0.15); color: var(--teal); }
+.course-card:nth-child(3) .course-age { background: rgba(199,82,110,0.15); color: var(--berry); }
+.course-card:nth-child(4) .course-age { background: rgba(107,165,199,0.15); color: var(--sky); }
+.course-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 600;
+  letter-spacing: -0.01em; margin-bottom: 10px;
+}
+.course-card p {
+  color: var(--ink-light); font-size: 0.9375rem;
+  line-height: 1.6; margin-bottom: 24px;
+  flex: 1;
+}
+.course-meta {
+  display: flex; gap: 16px;
+  font-size: 0.8125rem; color: var(--ink-muted);
+  font-weight: 600;
+}
+
+/* 鈹€鈹€鈹€ Approach 鈹€鈹€鈹€ */
+.approach-section { background: var(--paper); }
+.approach-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+.approach-item {
+  text-align: center; padding: 36px 24px;
+  border-radius: var(--radius-md);
+  transition: all 0.45s var(--ease-smooth);
+  cursor: default;
+  position: relative;
+  z-index: 1;
+}
+.approach-item::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: var(--radius-md);
+  background: #fff;
+  opacity: 0;
+  transition: all 0.45s var(--ease-smooth);
+  z-index: -1;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+}
+.approach-item:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+.approach-item:hover::before {
+  opacity: 1;
+}
+.approach-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem; font-weight: 700;
+  color: var(--paper-dark);
+  line-height: 1;
+  margin-bottom: 12px;
+  transition: all 0.45s var(--ease-smooth);
+}
+.approach-item:hover .approach-num {
+  color: var(--orange);
+  transform: scale(1.08);
+}
+.approach-item h4 {
+  font-family: var(--font-display);
+  font-size: 1.125rem; font-weight: 600;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+}
+.approach-item p { color: var(--ink-light); font-size: 0.9375rem; line-height: 1.65; transition: color 0.3s; }
+.approach-item:nth-child(2):hover .approach-num { color: var(--teal); }
+.approach-item:nth-child(3):hover .approach-num { color: var(--sky); }
+
+/* 鈹€鈹€鈹€ Projects 鈹€鈹€鈹€ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.project-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.4s var(--ease-smooth);
+  position: relative;
+}
+.project-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; border-radius: 0 0 3px 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transition: transform 0.35s var(--ease-smooth);
+}
+.project-card:nth-child(2)::after { background: var(--teal); }
+.project-card:nth-child(3)::after { background: var(--berry); }
+.project-card:nth-child(4)::after { background: var(--sky); }
+.project-card:nth-child(5)::after { background: var(--mustard); }
+.project-card:nth-child(6)::after { background: var(--ink-muted); }
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(0,0,0,0.1); }
+.project-card:hover::after { transform: scaleX(1); }
+.project-preview {
+  height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.project-card:nth-child(1) .project-preview { background: #fef6ed; }
+.project-card:nth-child(2) .project-preview { background: #edf6f3; }
+.project-card:nth-child(3) .project-preview { background: #fdf2f5; }
+.project-card:nth-child(4) .project-preview { background: #eef5fa; }
+.project-info { padding: 18px 20px; }
+.project-info h5 {
+  font-family: var(--font-display);
+  font-size: 1.0625rem; font-weight: 600;
+  margin-bottom: 4px;
+}
+.project-info .project-desc {
+  font-size: 0.8125rem; color: var(--ink-light);
+  line-height: 1.55; margin-bottom: 8px;
+}
+.project-info span {
+  font-size: 0.8125rem; color: var(--ink-muted);
+  font-weight: 600;
+}
+
+/* 鈹€鈹€鈹€ Teachers 鈹€鈹€鈹€ */
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.teacher-card {
+  display: flex; gap: 20px;
+  background: #fff; border-radius: var(--radius-md);
+  padding: 28px; border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s var(--ease-smooth);
+  position: relative; overflow: hidden;
+}
+.teacher-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; border-radius: 0 3px 3px 0;
+  transform: scaleY(0);
+  transition: transform 0.35s var(--ease-smooth);
+}
+.teacher-card:nth-child(1)::before { background: var(--orange); }
+.teacher-card:nth-child(2)::before { background: var(--teal); }
+.teacher-card:nth-child(3)::before { background: var(--sky); }
+.teacher-card:hover::before { transform: scaleY(1); }
+.teacher-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+.teacher-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+}
+.teacher-card:nth-child(1) .teacher-avatar { background: #fef6ed; }
+.teacher-card:nth-child(2) .teacher-avatar { background: #edf6f3; }
+.teacher-card:nth-child(3) .teacher-avatar { background: #eef5fa; }
+.teacher-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.0625rem; font-weight: 600;
+  margin-bottom: 2px;
+}
+.teacher-role { font-size: 0.8125rem; color: var(--orange); font-weight: 700; display: block; margin-bottom: 6px; }
+.teacher-info p { font-size: 0.875rem; color: var(--ink-light); line-height: 1.5; }
+
+/* 鈹€鈹€鈹€ CTA 鈹€鈹€鈹€ */
+.cta-section { text-align: center; }
+.cta-block {
+  max-width: 600px; margin: 0 auto;
+  padding: 56px 48px;
+  background: #fff;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
+  position: relative; overflow: hidden;
+}
+.cta-block::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 120px; height: 120px;
+  background: rgba(244,184,54,0.2);
+  border-radius: 50%;
+}
+.cta-block h2 {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.cta-block p {
+  color: var(--ink-light); margin-bottom: 28px;
+  position: relative; z-index: 1;
+}
+
+/* 鈹€鈹€鈹€ Footer 鈹€鈹€鈹€ */
+.footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding: 36px 24px; text-align: center;
+}
+.footer p { color: var(--ink-muted); font-size: 0.875rem; }
+
+/* 鈹€鈹€鈹€ Doodle Divider 鈹€鈹€鈹€ */
+.divider-doodle {
+  text-align: center; padding: 0 24px;
+  position: relative; z-index: 1;
+}
+.divider-doodle svg { max-width: 200px; opacity: 0.5; }
+
+/* 鈹€鈹€鈹€ Reveal 鈹€鈹€鈹€ */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* 鈹€鈹€鈹€ Pricing 鈹€鈹€鈹€ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.pricing-card {
+  background: #fff; border-radius: var(--radius-md);
+  padding: 28px 24px; border: 1px solid rgba(0,0,0,0.04);
+  text-align: center; transition: all 0.3s var(--ease-smooth);
+  position: relative;
+}
+.pricing-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.06); transform: translateY(-3px); }
+.pricing-card--featured { border: 2px solid var(--orange); box-shadow: 0 8px 24px rgba(232,101,46,0.08); }
+.pricing-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: #fff;
+  font-size: 0.6875rem; font-weight: 800;
+  padding: 3px 14px; border-radius: 100px; letter-spacing: 0.04em; white-space: nowrap;
+}
+.pricing-name { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; margin-bottom: 4px; }
+.pricing-age { font-size: 0.75rem; color: var(--ink-muted); font-weight: 600; margin-bottom: 16px; }
+.pricing-price { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; letter-spacing: -0.02em; color: var(--orange); }
+.pricing-price span { font-size: 0.875rem; font-weight: 600; color: var(--ink-muted); }
+.pricing-detail { font-size: 0.8125rem; color: var(--ink-light); line-height: 1.6; margin-top: 6px; }
+.pricing-note { margin-top: 36px; text-align: center; font-size: 0.875rem; color: var(--ink-muted); line-height: 1.7; }
+
+/* 鈹€鈹€鈹€ Map 鈹€鈹€鈹€ */
+.map-section { background: var(--paper); }
+.map-container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.map-frame {
+  aspect-ratio: 4/3; background: #e8e3d9; border-radius: var(--radius-md);
+  overflow: hidden; position: relative; border: 1px solid rgba(0,0,0,0.05);
+}
+.map-frame iframe { width: 100%; height: 100%; border: none; }
+.map-info h3 { font-family: var(--font-display); font-size: 1.375rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; }
+.map-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+.map-item:last-child { border-bottom: none; }
+.map-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(232,101,46,0.08);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.map-label { font-size: 0.75rem; color: var(--ink-muted); font-weight: 700; margin-bottom: 2px; }
+.map-value { font-weight: 600; font-size: 0.9375rem; }
+
+/* 鈹€鈹€鈹€ QR 鈹€鈹€鈹€ */
+.qr-card {
+  background: #fff; border-radius: var(--radius-md);
+  padding: 32px; text-align: center;
+  border: 1px solid rgba(0,0,0,0.04); max-width: 320px;
+}
+.qr-img {
+  width: 160px; height: 160px;
+  background: var(--paper); border-radius: var(--radius-sm);
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 4px;
+  border: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.6875rem; color: var(--ink-muted); font-weight: 600;
+}
+.qr-card h4 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; margin-bottom: 4px; }
+.qr-card p { font-size: 0.8125rem; color: var(--ink-muted); line-height: 1.5; }
+
+/* 鈹€鈹€鈹€ Gallery 鈹€鈹€鈹€ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-item {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  cursor: default;
+}
+.gallery-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-smooth);
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-art {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.gallery-art--1 { background: linear-gradient(135deg, #fef6ed 0%, #fce4cc 50%, #fef0e0 100%); }
+.gallery-art--2 { background: linear-gradient(135deg, #edf6f3 0%, #d5ebe3 50%, #e8f4f0 100%); }
+.gallery-art--3 { background: linear-gradient(135deg, #eef4fa 0%, #d8e8f5 50%, #e8f0f8 100%); }
+.gallery-art-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.gallery-art--1 .gallery-art-shape--a {
+  width: 120px; height: 120px;
+  background: #f4b836;
+  top: -20px; right: -30px;
+}
+.gallery-art--1 .gallery-art-shape--b {
+  width: 80px; height: 80px;
+  background: #e8652e;
+  bottom: 20px; left: 30px;
+}
+.gallery-art--1 .gallery-art-shape--c {
+  width: 50px; height: 50px;
+  background: #f2854b;
+  top: 60px; left: 60px;
+  border-radius: 8px;
+}
+.gallery-art--2 .gallery-art-shape--a {
+  width: 100px; height: 100px;
+  background: #3d8b7d;
+  bottom: -10px; right: 20px;
+}
+.gallery-art--2 .gallery-art-shape--b {
+  width: 60px; height: 90px;
+  background: #7a9e5a;
+  top: 30px; left: 50px;
+  border-radius: 12px;
+}
+.gallery-art--2 .gallery-art-shape--c {
+  width: 70px; height: 70px;
+  background: #6ba5c7;
+  top: 50px; right: 50px;
+}
+.gallery-art--3 .gallery-art-shape--a {
+  width: 110px; height: 110px;
+  background: #c7526e;
+  top: 10px; left: -20px;
+}
+.gallery-art--3 .gallery-art-shape--b {
+  width: 70px; height: 70px;
+  background: #f4b836;
+  top: 30px; right: 40px;
+  border-radius: 6px;
+}
+.gallery-art--3 .gallery-art-shape--c {
+  width: 90px; height: 60px;
+  background: #6ba5c7;
+  bottom: 20px; right: 30px;
+  border-radius: 12px;
+}
+.gallery-art-label {
+  position: relative; z-index: 1;
+  font-family: var(--font-display);
+  font-size: 1.0625rem; font-weight: 600;
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+/* 鈹€鈹€鈹€ Testimonials 鈹€鈹€鈹€ */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.testimonial-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.4s var(--ease-smooth);
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+  border-color: transparent;
+}
+.testimonial-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid #f0ebe0;
+}
+.testimonial-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9375rem;
+  color: #fff;
+}
+.testimonial-card:nth-child(1) .testimonial-avatar { background: #e8652e; }
+.testimonial-card:nth-child(2) .testimonial-avatar { background: #3d8b7d; }
+.testimonial-card:nth-child(3) .testimonial-avatar { background: #c7526e; }
+.testimonial-card:nth-child(4) .testimonial-avatar { background: #6ba5c7; }
+.testimonial-card:nth-child(5) .testimonial-avatar { background: #f4b836; }
+.testimonial-card:nth-child(6) .testimonial-avatar { background: #7a9e5a; }
+.testimonial-name {
+  font-weight: 700; font-size: 0.9375rem;
+  line-height: 1.3;
+}
+.testimonial-tag {
+  font-size: 0.75rem; color: var(--ink-muted);
+  font-weight: 600;
+}
+.testimonial-body {
+  padding: 16px 22px 22px;
+  position: relative;
+}
+.testimonial-body::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: 28px;
+  width: 14px; height: 14px;
+  background: #fff;
+  border-left: 1px solid #f0ebe0;
+  border-top: 1px solid #f0ebe0;
+  transform: rotate(45deg);
+}
+.testimonial-msg {
+  font-size: 0.9375rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  font-style: italic;
+}
+.testimonial-msg::before { content: '\201C'; }
+.testimonial-msg::after { content: '\201D'; }
+
+/* 鈹€鈹€鈹€ Responsive 鈹€鈹€鈹€ */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-btn { display: none; }
+  .nav-toggle { display: block; }
+  .nav-inner { padding: 0; }
+
+  /* Hero */
+  .hero { grid-template-columns: 1fr; gap: 32px; padding: 100px 20px 60px; }
+  .hero-visual { height: 220px; }
+  .hero-blob--lg { width: 150px; height: 150px; top: 30px; left: 0; }
+  .hero-blob--sm { width: 90px; height: 90px; top: 100px; left: 100px; }
+  .hero-blob--xs { width: 50px; height: 50px; top: 10px; left: 150px; }
+  .hero-float-cards { left: 50px; top: 0; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 0.9375rem; }
+
+  /* Sections */
+  .section { padding: 56px 16px; }
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 { font-size: 1.625rem; }
+
+  /* Grids */
+  .courses-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .approach-list { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .teachers-grid { grid-template-columns: 1fr; }
+  .contact-section { grid-template-columns: 1fr; }
+  .map-container { grid-template-columns: 1fr; }
+
+  /* Cards */
+  .course-card { padding: 28px 22px; }
+  .teacher-card { flex-direction: column; align-items: flex-start; }
+  .testimonial-card { margin-bottom: 12px; }
+  .pricing-card { padding: 24px 18px; }
+  .pricing-price { font-size: 1.75rem; }
+
+  /* CTA */
+  .cta-block { padding: 36px 20px; }
+  .cta-block h2 { font-size: 1.5rem; }
+
+  /* Map */
+  .map-info h3 { font-size: 1.25rem; }
+  .map-value { font-size: 0.875rem; }
+
+  /* Footer */
+  .footer p { font-size: 0.75rem; }
+
+  /* Typography */
+  body { font-size: 0.9375rem; }
+}
+
+/* Smaller phones */
+@media (max-width: 380px) {
+  .hero { padding: 90px 16px 48px; }
+  .hero-visual { height: 180px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo" style="flex-direction:column;align-items:flex-start;gap:0;">
+      <span class="logo-text">nino</span>
+      <span class="logo-sub">缂栫▼瀹為獙瀹?/span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#courses">璇剧▼</a></li>
+      <li><a href="#pricing">浠锋牸</a></li>
+      <li><a href="#testimonials">鍙ｇ</a></li>
+      <li><a href="#teachers">瀵煎笀</a></li>
+      <li><a href="#contact">鑱旂郴</a></li>
+    </ul>
+    <a href="seedlab-trial.html" class="nav-btn">棰勭害璇曞惉</a>
+    <button class="nav-toggle" aria-label="鑿滃崟" onclick="const l=document.querySelector('.nav-links'); l.style.display=l.style.display==='flex'?'none':'flex'">鈽?/button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <span class="hero-tag">4鈥?6 宀?路 灏忕彮鍒?路 绾夸笅宸ヤ綔瀹?/span>
+    <h1>璁╂瘡涓瀛?br>閮借兘<em>鍒涢€?/em>鑰岄潪娑堣垂</h1>
+    <p>涓嶆槸鍩硅鐝紝鏄竴闂寸婊″ソ濂囧績鐨勫疄楠屽銆傛垜浠敤 Scratch銆丳ython 鍜屾満鍣ㄤ汉锛屽甫瀛╁瓙鍦ㄧ姱閿欏拰淇涓浼氱紪绋嬧€斺€斾篃瀛︿細鎬濊€冦€?/p>
+    <div class="hero-actions">
+      <a href="seedlab-trial.html" class="btn btn-fill">棰勭害鍏嶈垂璇曞惉璇?鈫?/a>
+      <a href="#courses" class="btn btn-line">鐪嬬湅璇剧▼</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-illustration">
+      <div class="hero-blob hero-blob--lg"></div>
+      <div class="hero-blob hero-blob--sm"></div>
+      <div class="hero-blob hero-blob--xs"></div>
+      <div class="hero-float-cards">
+        <div class="float-card"><span class="float-dot float-dot--orange"></span> Scratch 鍔ㄧ敾</div>
+        <div class="float-card"><span class="float-dot float-dot--mustard"></span> Python 灏忔父鎴?/div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Courses -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">闃舵璇剧▼</div>
+      <h2>鍥涘勾纾ㄤ竴鍓戠殑璇剧▼浣撶郴</h2>
+      <p>浠庢嫋鎷界Н鏈ㄥ埌鍐欏嚭绗竴涓?Python 鐖櫕锛屾瘡涓€姝ラ兘韪╁湪瀛╁瓙鐨勬渶杩戝彂灞曞尯閲屻€?/p>
+    </div>
+    <div class="courses-grid">
+      <a href="seedlab-course-robot.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
+        <span class="course-age">4鈥? 宀?/span>
+        <h3>涔愰珮鏈哄櫒浜哄惎钂?/h3>
+        <p>鐢ㄥぇ棰楃矑绉湪鎼涓€涓細鍔ㄧ殑鏈哄櫒浜恒€傜數鏈轰竴鎺ャ€侀娇杞竴杞紝瀛╁瓙鍦ㄦ嫾瑁呬腑鐞嗚В鏈烘缁撴瀯鍜屼紶鎰熷櫒鍘熺悊銆?/p>
+        <div class="course-meta"><span>12 璇炬椂</span><span>4 浜虹彮</span></div>
+      </a>
+      <a href="seedlab-course-scratch.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
+        <span class="course-age">7鈥?1 宀?/span>
+        <h3>Scratch 鍒涙剰缂栫▼</h3>
+        <p>浠?Flappy Bird 鍒版鐗╁ぇ鎴樺兊灏革紝姣忚妭璇惧氨鏄竴涓畬鏁寸殑娓告垙椤圭洰銆傚浼氬彉閲忋€佸惊鐜拰浜嬩欢銆?/p>
+        <div class="course-meta"><span>24 璇炬椂</span><span>6 浜虹彮</span></div>
+      </a>
+      <a href="seedlab-course-python.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
+        <span class="course-age">10鈥?3 宀?/span>
+        <h3>Python 鎺㈡瀛﹂櫌</h3>
+        <p>鐢ㄤ唬鐮佺牬瑙ｈ皽棰橈細鍐欎竴涓嚜鍔ㄦ暣鐞嗘枃浠剁殑鑴氭湰锛屽仛涓€涓ぉ姘旀煡璇㈡満鍣ㄤ汉銆傚憡鍒?print("hello world")銆?/p>
+        <div class="course-meta"><span>32 璇炬椂</span><span>6 浜虹彮</span></div>
+      </a>
+      <a href="seedlab-course-cpp.html" class="course-card reveal" style="text-decoration:none;color:inherit;display:block">
+        <span class="course-age">12鈥?6 宀?/span>
+        <h3>鏈哄櫒浜?+ C++ 绔炶禌钀?/h3>
+        <p>Arduino 灏忚溅 + 浼犳劅鍣?+ 绠楁硶鍏ラ棬銆傞潰鍚戜俊濂ュ拰鏈哄櫒浜虹珵璧涳紝甯︽瘮璧涙姤鍚嶈緟瀵笺€?/p>
+        <div class="course-meta"><span>48 璇炬椂</span><span>4 浜虹彮</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing" style="padding-bottom:0">
+  <div class="container" style="max-width:960px">
+    <div class="section-header reveal" style="margin-bottom:36px">
+      <div class="section-eyebrow">璇剧▼璐圭敤</div>
+      <h2>鏄庣爜鏍囦环锛屼笉鎼?鍜ㄨ鍚庢姤浠?</h2>
+      <p>浠锋牸鍚墍鏈夋暀鍏枫€佽澶囧拰鏉愭枡璐广€傝瘯鍚笉婊℃剰涓嶆敹璐癸紝姝ｅ紡璇惧悗濡傛湁鐗规畩鎯呭喌鎸夊墿浣欒鏃堕€€璐广€?/p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-name">涔愰珮鏈哄櫒浜哄惎钂?/div>
+        <div class="pricing-age">4鈥? 宀?路 12 璇炬椂</div>
+        <div class="pricing-price">2,160<span> / 鏈?/span></div>
+        <div class="pricing-detail">鍚叏濂椾箰楂樻暀鍏蜂娇鐢?br>骞冲潎 180 鍏?璇炬椂</div>
+      </div>
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-badge">鏈€鍙楁杩?/div>
+        <div class="pricing-name">Scratch 鍒涙剰缂栫▼</div>
+        <div class="pricing-age">7鈥?1 宀?路 24 璇炬椂</div>
+        <div class="pricing-price">4,080<span> / 鏈?/span></div>
+        <div class="pricing-detail">鍚叏閮ㄨ浠剁礌鏉愬拰浣滃搧闆?br>骞冲潎 170 鍏?璇炬椂</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">Python 鎺㈡瀛﹂櫌</div>
+        <div class="pricing-age">10鈥?3 宀?路 32 璇炬椂</div>
+        <div class="pricing-price">5,120<span> / 鏈?/span></div>
+        <div class="pricing-detail">鍚湇鍔″櫒鍜?API 璋冪敤棰濆害<br>骞冲潎 160 鍏?璇炬椂</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">鏈哄櫒浜?+ C++ 绔炶禌</div>
+        <div class="pricing-age">12鈥?6 宀?路 48 璇炬椂</div>
+        <div class="pricing-price">8,640<span> / 鏈?/span></div>
+        <div class="pricing-detail">鍚叏濂?Arduino 濂椾欢锛堝彲甯﹁蛋锛?br>骞冲潎 180 鍏?璇炬椂</div>
+      </div>
+    </div>
+    <div class="pricing-note reveal">
+      <p>鏀寔 3 鏈熷厤鎭垎鏈燂紝璇︽儏鍜ㄨ璇剧▼椤鹃棶闄堣€佸笀銆?/p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-doodle reveal">
+  <svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 12 Q40 2 70 12 Q100 22 130 12 Q160 2 190 12" stroke="#e8652e" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3"/>
+  </svg>
+</div>
+
+<!-- Approach -->
+<section class="section approach-section" id="approach">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">鎴戜滑鐨勬柟寮?/div>
+      <h2>涓嶆槸鏁欑紪绋嬶紝鏄暀"瑙ｅ喅闂"</h2>
+      <p>浠ｇ爜浼氳繃鏃讹紝浣嗘媶瑙ｉ棶棰樸€佽凯浠ｈ瘯閿欑殑鑳藉姏涓嶄細銆?/p>
+    </div>
+    <div class="approach-list">
+      <div class="approach-item reveal">
+        <div class="approach-num">01</div>
+        <h4>椤圭洰椹卞姩</h4>
+        <p>姣忚妭璇句氦浠樹竴涓畬鏁翠綔鍝侊紝瀛╁瓙璧扮殑鏃跺€欐墜閲屾湁涓滆タ鍙互鐐€€銆?/p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="approach-num">02</div>
+        <h4>鍏堢姱閿欏啀绾犳</h4>
+        <p>涓嶇瓑瀛╁瓙鍑洪敊锛屾垜浠晠鎰忓煁 bug銆備慨濂藉畠鐨勯偅涓€鍒伙紝鐭ヨ瘑鎵嶇湡姝ｉ暱鍦ㄨ剳瀛愰噷銆?/p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="approach-num">03</div>
+        <h4>涓嶆浛瀛╁瓙鍐欎唬鐮?/h4>
+        <p>鑰佸笀鐨勬墜鎸囩寮€閿洏銆傛瘡涓€琛岄兘鏄瀛愯嚜宸辨暡鐨勶紝鎱紝浣嗘墡瀹炪€?/p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section" id="gallery">
+  <div class="container" style="max-width:960px;">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">鏁欏鐜</div>
+      <h2>涓€涓瀛愭潵浜嗕笉鎯宠蛋鐨勫湴鏂?/h2>
+      <p>鏈夊湴姣€佺粯鏈拰涔愰珮澧欍€傛垜浠竷缃殑涓嶆槸鏁欏锛屾槸绗簩涓銆?/p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <div class="gallery-art gallery-art--1">
+          <div class="gallery-art-shape gallery-art-shape--a"></div>
+          <div class="gallery-art-shape gallery-art-shape--b"></div>
+          <div class="gallery-art-shape gallery-art-shape--c"></div>
+          <span class="gallery-art-label">鏁欏鍏ㄦ櫙</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art gallery-art--2">
+          <div class="gallery-art-shape gallery-art-shape--a"></div>
+          <div class="gallery-art-shape gallery-art-shape--b"></div>
+          <div class="gallery-art-shape gallery-art-shape--c"></div>
+          <span class="gallery-art-label">缂栫▼宸ヤ綅</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art gallery-art--3">
+          <div class="gallery-art-shape gallery-art-shape--a"></div>
+          <div class="gallery-art-shape gallery-art-shape--b"></div>
+          <div class="gallery-art-shape gallery-art-shape--c"></div>
+          <span class="gallery-art-label">涔愰珮澧?& 闃呰瑙?/span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">瀛﹀憳浣滃搧</div>
+      <h2>杩欎簺閮芥槸 10 宀佸瀛愬啓鐨?/h2>
+      <p>閮芥槸瀛﹀憳鑷繁鍋氱殑銆傛瘡涓€涓」鐩兘鏈夋簮鐮佸拰璁捐绗旇锛屾杩庢潵缈汇€?/p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-preview" style="background:#fef6ed">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="6" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/><rect x="26" y="6" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/><rect x="6" y="26" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/><rect x="26" y="26" width="16" height="16" rx="4" stroke="#e8652e" stroke-width="2.5"/></svg>
+        </div>
+        <div class="project-info">
+          <h5>澶┖鍨冨溇鏀堕泦鍣?/h5>
+          <p class="project-desc">鐢?Scratch 鍋氱殑鍙屼汉鍚堜綔娓告垙銆備竴涓帺瀹舵帶鍒堕鑸规敹闆嗗瀮鍦撅紝鍙︿竴涓帶鍒舵縺鍏夊鎵撻櫒鐭炽€傜敤鍒颁簡鍏嬮殕浣撱€佸箍鎾秷鎭拰鍙橀噺璁″垎銆?/p>
+          <span>灏忓畤 路 9 宀?路 Scratch</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-preview" style="background:#edf6f3">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#3d8b7d" stroke-width="2.5"/><circle cx="24" cy="24" r="8" stroke="#3d8b7d" stroke-width="2.5"/><circle cx="24" cy="24" r="2.5" fill="#3d8b7d"/></svg>
+        </div>
+        <div class="project-info">
+          <h5>寰俊澶╂皵鎻愰啋鏈哄櫒浜?/h5>
+          <p class="project-desc">Python 鑴氭湰姣忓ぉ鏃╀笂 7 鐐硅嚜鍔ㄦ煡澶╂皵锛岄€氳繃 Server閰?鎺ㄩ€佸埌濡堝鐨勫井淇°€傜敤鍒颁簡 API 璋冪敤銆丣SON 瑙ｆ瀽鍜?schedule 瀹氭椂浠诲姟銆?/p>
+          <span>鏋滄灉 路 12 宀?路 Python</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-preview" style="background:#fdf2f5">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M14 10h20l-6 28H20L14 10z" stroke="#c7526e" stroke-width="2.5" stroke-linejoin="round"/><circle cx="24" cy="26" r="4" stroke="#c7526e" stroke-width="2"/></svg>
+        </div>
+        <div class="project-info">
+          <h5>鑷姩鍨冨溇鍒嗙被瑁呯疆</h5>
+          <p class="project-desc">Arduino + 鏍戣帗娲?+ 鎽勫儚澶达紝鐢?Python 鍋氬浘鍍忚瘑鍒垽鏂瀮鍦剧绫伙紝Arduino 鎺у埗鑸垫満鎶婂瀮鍦炬帹鍒板搴旂殑妗堕噷銆傚競璧涗竴绛夊浣滃搧銆?/p>
+          <span>灏忛洦 + 灏忚埅 路 14 宀?路 Arduino + Python</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-preview" style="background:#eef5fa">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="40" height="28" rx="4" stroke="#6ba5c7" stroke-width="2.5"/><rect x="12" y="32" width="24" height="6" rx="2" stroke="#6ba5c7" stroke-width="2.5"/><rect x="16" y="38" width="16" height="4" rx="2" stroke="#6ba5c7" stroke-width="2.5"/></svg>
+        </div>
+        <div class="project-info">
+          <h5>鍍忕礌椋庡闃叉父鎴?/h5>
+          <p class="project-desc">浠庨浂缁樺埗鐨勫儚绱犵礌鏉愶紝鍏闃插尽濉斿悇鏈変笉鍚屾敾鍑绘ā寮忥紝15 娉㈡晫浜洪毦搴﹂€掑銆傜敤鍒颁簡鍒楄〃瀛樺偍鏁屼汉璺緞銆佽嚜瀹氫箟绉湪绠＄悊濉旂殑鏀诲嚮閫昏緫銆?/p>
+          <span>璞嗚眴 路 11 宀?路 Scratch</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-preview" style="background:#fef7e8">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="28" rx="3" stroke="#f4b836" stroke-width="2.5"/><rect x="16" y="4" width="16" height="6" rx="3" stroke="#f4b836" stroke-width="2.5"/><line x1="24" y1="4" x2="24" y2="10" stroke="#f4b836" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="#f4b836" stroke-width="2.5"/></svg>
+        </div>
+        <div class="project-info">
+          <h5>璇惧爞鎶界瓟鍣?/h5>
+          <p class="project-desc">Python + Tkinter 鍐欑殑灏忚蒋浠讹紝闅忔満鐐逛汉鍥炵瓟闂锛岀偣杩囩殑涓嶄細閲嶅銆傝瀛︽牎鑰佸笀鐪熺殑鐢ㄥ湪浜嗚鍫備笂锛屽叏鐝?45 涓汉鐨勫悕瀛楅兘鍦ㄩ噷闈€?/p>
+          <span>涔愪箰 路 13 宀?路 Python</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-preview" style="background:#f0ede5">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="16" height="32" rx="3" stroke="#968b82" stroke-width="2.5"/><circle cx="14" cy="16" r="3" fill="#968b82"/><line x1="14" y1="22" x2="14" y2="32" stroke="#968b82" stroke-width="2.5" stroke-linecap="round"/><line x1="8" y1="36" x2="20" y2="36" stroke="#968b82" stroke-width="2"/><rect x="28" y="14" width="14" height="20" rx="3" stroke="#968b82" stroke-width="2.5"/></svg>
+        </div>
+        <div class="project-info">
+          <h5>鑷姩娴囪姳绯荤粺</h5>
+          <p class="project-desc">Arduino + 鍦熷￥婀垮害浼犳劅鍣?+ 姘存车銆傛娴嬪埌鍦熷￥澶共灏辫嚜鍔ㄦ祰姘达紝鎵嬫満涓婅兘鐪嬪埌婀垮害鏇茬嚎銆傝€佹潹鑰佸笀甯︾潃鎷嗕簡涓€涓簾鏃у姞婀垮櫒鏀硅鐨勬按娉点€?/p>
+          <span>瀛愭兜 路 15 宀?路 Arduino</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">瀹堕暱鍙嶉</div>
+      <h2>瀹堕暱璇寸殑锛屾瘮鎴戜滑璇寸殑闈犺氨</h2>
+      <p>鍏ㄦ槸鐪熷疄瀹堕暱鐨勫師璇濓紝涓€涓瓧娌℃敼銆?/p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">鍒?/div>
+          <div>
+            <div class="testimonial-name">鏉惧北婀栦笢鑱屾暀鑱屽伐瀹堕暱</div>
+            <div class="testimonial-tag">瀛╁瓙 8 宀?路 鍦ㄨ Scratch 璇剧▼</div>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-msg">涔嬪墠鍦ㄥ鏁欎粬鑷繁鎼Н鏈ㄧ紪绋嬶紝涓夊ぉ灏辨斁寮冧簡銆傛潵 nino 涔嬪悗瀹屽叏涓嶄竴鏍封€斺€斿ぇ楣忚€佸笀浼氭晠鎰忓湪浠ｇ爜閲岀暀 bug锛岃瀛╁瓙鑷繁鍘讳慨銆備慨濂戒箣鍚庨偅涓垚灏辨劅锛屽悆楗兘鍦ㄨ窡鎴戜滑璁层€?/p>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">闄?/div>
+          <div>
+            <div class="testimonial-name">鏉惧北婀栭敠缁ｅ北娌冲皬鍖哄闀?/div>
+            <div class="testimonial-tag">瀛╁瓙 6 宀?路 鍦ㄨ涔愰珮鏈哄櫒浜哄惎钂?/div>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-msg">濞冩墠鍏瞾锛屾垜浠ヤ负浠栧潗涓嶄綇銆傜涓€娆¤瘯鍚鎼簡涓€涓細鍔ㄧ殑椋庢墖锛屽叏绋嬫病鎵炬垜銆傜幇鍦ㄦ瘡鍛ㄥ叚鑷繁涓诲姩绌块瀷鍌垜鍑洪棬锛岃瑕佸幓'鏈哄櫒浜哄鏍?銆?/p>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">鍛?/div>
+          <div>
+            <div class="testimonial-name">骞跨鏁欒亴宸ュ灞?/div>
+            <div class="testimonial-tag">瀛╁瓙 12 宀?路 鍦ㄨ Python 璇剧▼</div>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-msg">Mia 鑰佸笀澶細鏁欎簡銆傛垜瀹跺瀛愪箣鍓嶅湪鍒殑鏈烘瀯瀛?Python锛屼笂浜嗗崐骞村彧浼?print銆傛潵杩欒竟绗笁鑺傝灏辫嚜宸卞啓浜嗕釜澶╂皵鏌ヨ鑴氭湰锛屽洖瀹跺叴濂嬪湴缁欐垜浠叏瀹舵紨绀恒€?/p>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">榛?/div>
+          <div>
+            <div class="testimonial-name">鏉惧北婀栫繝鐝戞咕灏忓尯瀹堕暱</div>
+            <div class="testimonial-tag">瀛╁瓙 10 宀?路 鍦ㄨ Scratch 璇剧▼</div>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-msg">鏈€鎵撳姩鎴戠殑鏄?瀹堕暱鍏ㄧ▼鏃佸惉'銆傛垜灏卞潗鍦ㄦ暀瀹ゅ悗闈㈢殑娌欏彂涓婏紝鐪嬭€佸笀鎬庝箞寮曞瀛╁瓙鑷繁瑙ｅ喅闂銆傜湡鐨勬槸鑷繁涓嶅府瀛╁瓙鍐欎唬鐮侊紝椤跺闂竴鍙?浣犺寰楅棶棰樺嚭鍦ㄥ摢'銆?/p>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">寮?/div>
+          <div>
+            <div class="testimonial-name">骞跨绗簩瀹跺睘鍖哄闀?/div>
+            <div class="testimonial-tag">瀛╁瓙 14 宀?路 鍦ㄨ鏈哄櫒浜虹珵璧涜绋?/div>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-msg">鏉庡崥澹湡鐨勬槸瀹濊棌鑰佸笀銆傚甫鐫€瀛╁瓙鎷嗗簾鐢靛櫒銆佺剨鐢佃矾鏉匡紝涓婃鍘绘帴瀛╁瓙鐪嬪埌浠栨弧鎵嬬剨閿′笣锛岀溂鐫涗寒寰椾笉琛屻€備粖骞村競璧涙嬁浜嗕竴绛夊锛屾劅璋?nino锛?/p>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar">鏋?/div>
+          <div>
+            <div class="testimonial-name">鏉惧北婀栦腑蹇冨皬瀛﹀闀?/div>
+            <div class="testimonial-tag">瀛╁瓙 9 宀?路 鍦ㄨ Scratch 璇剧▼</div>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <p class="testimonial-msg">璇曞惉涓婂畬鎴戞病绔嬪埢鎶ワ紝闄堣€佸笀涔熸病鍌€傝繃浜嗕竴鍛ㄦ垜涓诲姩鑱旂郴濂癸紝杩樻槸鍘熸潵鐨勪环鏍笺€傝繖绉嶄笉鎺ㄩ攢鐨勬€佸害鍙嶈€岃浜烘斁蹇冦€傜幇鍦ㄥ浜嗗崐骞达紝瀛╁瓙宸茬粡寮€濮嬫暀鐝笂鍚屽浜嗐€?/p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teachers -->
+<section class="section approach-section" id="teachers">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">瀵煎笀鍥㈤槦</div>
+      <h2>鍐欎唬鐮佸帀瀹崇殑浜哄緢澶?br>浣嗘噦瀛╁瓙鐨勪笉澶?/h2>
+      <p>鍏ㄥ憳璁＄畻鏈鸿儗鏅?+ 3 骞翠互涓婂効绔ユ暀鑲茬粡楠屻€?/p>
+    </div>
+    <div class="teachers-grid">
+      <div class="teacher-card reveal">
+        <div class="teacher-avatar">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="11" r="5" stroke="#e8652e" stroke-width="2"/><path d="M7 29c0-5 4-9 9-9s9 4 9 9" stroke="#e8652e" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="teacher-info">
+          <h4>闃块箯鑰佸笀</h4>
+          <span class="teacher-role">鍒涘浜?路 Scratch / 鏈哄櫒浜轰富璁?/span>
+          <p>骞垮伐璁＄畻鏈虹郴姣曚笟锛屽湪娣卞湷涓€瀹惰蒋浠跺叕鍙稿啓浜嗕笁骞村悗绔紝瑙夊緱娌℃剰鎬濓紝鍥炴澗灞辨箹寮€浜嗚繖闂村伐浣滃銆傛渶鎿呴暱鎶婂鏉傜殑姒傚康鎷嗘垚瀛╁瓙鑳藉惉鎳傜殑姣斿柣鈥斺€?寰幆灏卞儚浣犲姣忓ぉ鍌綘鍐欎綔涓?銆?/p>
+        </div>
+      </div>
+      <div class="teacher-card reveal">
+        <div class="teacher-avatar">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="11" r="5" stroke="#3d8b7d" stroke-width="2"/><path d="M7 29c0-5 4-9 9-9s9 4 9 9" stroke="#3d8b7d" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="teacher-info">
+          <h4>灏忛箍鑰佸笀</h4>
+          <span class="teacher-role">Python / 绔炶禌杈呭</span>
+          <p>涓滆帪鐞嗗伐瀛﹂櫌杞欢宸ョ▼涓撲笟锛屽ぇ瀛︽湡闂存嬁杩囪摑妗ユ澂鐪佽禌涓€绛夊銆傛瘯涓氬悗鍦ㄦ澗灞辨箹涓€瀹?IT 鍏徃鍋氫簡涓€骞村紑鍙戯紝鍙戠幇鏁欏瀛愭瘮鍐欎唬鐮佸紑蹇冿紝杈炶亴鍔犲叆 nino銆備笂璇句粠涓嶅彂鑴炬皵锛屼絾瀛╁瓙浠嚭濂囧湴鍚ス璇濄€?/p>
+        </div>
+      </div>
+      <div class="teacher-card reveal">
+        <div class="teacher-avatar">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="11" r="5" stroke="#6ba5c7" stroke-width="2"/><path d="M7 29c0-5 4-9 9-9s9 4 9 9" stroke="#6ba5c7" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="teacher-info">
+          <h4>鑰佹潹鑰佸笀</h4>
+          <span class="teacher-role">涔愰珮鍚挋 / 纭欢璇剧▼</span>
+          <p>涔嬪墠鍦ㄦ澗灞辨箹涓€瀹舵満鍣ㄤ汉鏁欒偛鏈烘瀯鍋氫簡鍥涘勾涓绘暀锛屽甫杩?200 澶氫釜瀛╁瓙銆傚姩鎵嬭兘鍔涙瀬寮猴紝鑳戒粠涓€鍫嗗簾鏃ч浂浠堕噷鎷煎嚭涓€涓細璺戠殑鏈哄櫒鐙椼€備俊濂?鎷嗗潖鍗佷釜鐜╁叿锛屽浼氫竴涓師鐞?銆?/p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map + Contact -->
+<section class="section map-section" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">鎵惧埌鎴戜滑</div>
+      <h2>杩囨潵杞浆</h2>
+      <p>鏉惧北婀栦腑蹇冨尯锛屾ゼ涓嬪仠杞︽柟渚裤€傛潵涔嬪墠寰俊璇翠竴澹板氨琛屻€?/p>
+    </div>
+    <div class="map-container reveal">
+      <div>
+        <div class="map-frame">
+          <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#e8e3d9;gap:8px;font-size:0.875rem;color:var(--ink-muted)">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="17" r="6" stroke="#e8652e" stroke-width="2.5"/><path d="M12 35c0-5 3.6-9 8-9s8 4 8 9" stroke="#e8652e" stroke-width="2.5" stroke-linecap="round"/></svg>
+            涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?br>鎬婚儴涓夎矾 8 鍙?路 3 妤?301
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+          <div class="qr-card" style="max-width:none">
+            <div class="qr-img">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="12" height="12" rx="2" stroke="#e8652e" stroke-width="3"/><rect x="28" y="8" width="12" height="12" rx="2" stroke="#e8652e" stroke-width="3"/><rect x="8" y="28" width="12" height="12" rx="2" stroke="#e8652e" stroke-width="3"/><circle cx="34" cy="34" r="6" stroke="#e8652e" stroke-width="3"/></svg>
+              <span style="margin-top:4px">寰俊鎵竴鎵?/span>
+            </div>
+            <h4>璇剧▼椤鹃棶 闄堣€佸笀</h4>
+            <p>186-7691-2345<br>宸ヤ綔鏃?2 灏忔椂鍐呭洖澶?/p>
+          </div>
+          <div class="qr-card" style="max-width:none">
+            <div class="qr-img">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="12" height="12" rx="2" stroke="#3d8b7d" stroke-width="3"/><rect x="28" y="8" width="12" height="12" rx="2" stroke="#3d8b7d" stroke-width="3"/><rect x="8" y="28" width="12" height="12" rx="2" stroke="#3d8b7d" stroke-width="3"/><circle cx="34" cy="34" r="6" stroke="#3d8b7d" stroke-width="3"/></svg>
+              <span style="margin-top:4px">寰俊鎵竴鎵?/span>
+            </div>
+            <h4>nino缂栫▼瀹為獙瀹?/h4>
+            <p>鍏虫敞鍏紬鍙疯幏鍙?br>璇剧▼鏇存柊鍜屾椿鍔ㄩ€氱煡</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="map-info">
+          <h3>浜ら€氭寚寮?/h3>
+          <div class="map-item">
+            <div class="map-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7" r="3" stroke="#e8652e" stroke-width="1.5"/><path d="M4 16c0-3 2.2-5 5-5s5 2 5 5" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="map-label">鍦板潃</div>
+              <div class="map-value">涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?br>鎬婚儴涓夎矾 8 鍙?路 涓囩鐢熸椿骞垮満鏃?路 3 妤?301</div>
+            </div>
+          </div>
+          <div class="map-item">
+            <div class="map-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#e8652e" stroke-width="1.5"/><circle cx="11" cy="11" r="1.5" stroke="#e8652e" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="map-label">鍏氦</div>
+              <div class="map-value">328 璺€?47 璺€佹澗灞辨箹绌挎宸村＋ 1 鍙风嚎<br>"鎬婚儴涓夎矾"绔欎笅杞︽琛?2 鍒嗛挓</div>
+            </div>
+          </div>
+          <div class="map-item">
+            <div class="map-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#e8652e" stroke-width="1.5"/><circle cx="9" cy="9" r="3" stroke="#e8652e" stroke-width="1.5"/></svg>
+            </div>
+            <div>
+              <div class="map-label">鍋滆溅</div>
+              <div class="map-value">妤间笅鍦伴潰鍋滆溅鍦猴紝鍓?2 灏忔椂鍏嶈垂<br>鍛ㄦ湯杞︿綅鍏呰冻</div>
+            </div>
+          </div>
+          <div class="map-item">
+            <div class="map-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#e8652e" stroke-width="1.5"/><path d="M9 5v4l2.5 2.5" stroke="#e8652e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="map-label">钀ヤ笟鏃堕棿</div>
+              <div class="map-value">鍛ㄤ笁鑷冲懆浜?14:00鈥?0:00<br>鍛ㄥ叚鑷冲懆鏃?9:00鈥?8:00<br><span style="color:#e8652e;font-size:0.8125rem">鍛ㄤ竴銆佸懆浜屼紤鎭?/span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enroll CTA -->
+<section class="section cta-section" id="enroll">
+  <div class="container">
+    <div class="cta-block reveal">
+      <h2>甯﹀▋鏉ヨ瘯涓€鑺傦紝涓嶆敹璐?/h2>
+      <p>30 鍒嗛挓锛屽瀛愬甫璧颁竴涓嚜宸卞仛鐨勪綔鍝併€備綘鍧愬湪鏃佽竟鐪嬶紝瑙夊緱鍊煎啀鎶ュ悕銆?/p>
+      <a href="seedlab-trial.html" class="btn btn-fill" style="font-size:1.0625rem; padding:16px 36px;">
+        棰勭害璇曞惉
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>涓滆帪甯傛澗灞辨箹绉戞妧浜т笟鍥?路 0769-88001234 路 nino缂栫▼瀹為獙瀹?漏 2026</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
